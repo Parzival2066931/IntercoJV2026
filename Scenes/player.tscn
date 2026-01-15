@@ -1,80 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhi81cf5cb60j"]
+[gd_scene load_steps=3 format=3 uid="uid://dhi81cf5cb60j"]
 
-[ext_resource type="Script" uid="uid://x6fsy78x3btb" path="res://Script/player.gd" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://t033hjr5gfjc" path="res://Assets/Sprites/vaisseau_a_Mick.png" id="2_cvnsp"]
-[ext_resource type="Resource" uid="uid://0u7smregwaty" path="res://Resources/player_stats.tres" id="2_vgqql"]
-[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://addons/trail_2d/trail_2d.gd" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bcsuflg3riw4e" path="res://Scenes/turret_manager.tscn" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bbor0y2vtlan1" path="res://Assets/Sprites/icon.svg" id="2_6t5aa"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
-radius = 65.52099
+[node name="Player" type="Node2D"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f60y1"]
-radius = 70.40597
-
-[sub_resource type="Curve" id="Curve_vgqql"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5054348, 0.68539333), -1.4028896, -1.4028896, 0, 0, Vector2(0.74456525, 0), -5.053682, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_vgqql"]
-colors = PackedColorArray(0.20392157, 0.8, 0.83137256, 1, 1, 1, 1, 0)
-
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 17
-script = ExtResource("1_v0iea")
-base_stats = ExtResource("2_vgqql")
-acceleration = 0.02
-
-[node name="ShipSprite" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_cvnsp")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-position_smoothing_enabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_v0iea")
-
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 16
-
-[node name="Hurtshape" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
-shape = SubResource("CircleShape2D_f60y1")
-
-[node name="PassiveHeal" type="Timer" parent="."]
+[node name="TurretManager" parent="." instance=ExtResource("1_cvnsp")]
 
 [node name="TurretsPositions" type="Node2D" parent="."]
 
 [node name="Pos1" type="Marker2D" parent="TurretsPositions"]
-position = Vector2(-27, -33)
+position = Vector2(-50, -50)
 
 [node name="Pos2" type="Marker2D" parent="TurretsPositions"]
-position = Vector2(27, -33)
+position = Vector2(51, -48)
 
 [node name="Pos3" type="Marker2D" parent="TurretsPositions"]
+position = Vector2(-2, 0)
 
 [node name="Pos4" type="Marker2D" parent="TurretsPositions"]
-position = Vector2(-27, 33)
+position = Vector2(-49, 50)
 
 [node name="Pos5" type="Marker2D" parent="TurretsPositions"]
-position = Vector2(27, 33)
+position = Vector2(48, 45)
 
-[node name="Trail2D" type="Line2D" parent="."]
-z_index = -1
-width = 128.0
-width_curve = SubResource("Curve_vgqql")
-default_color = Color(0.43529412, 1, 1, 1)
-gradient = SubResource("Gradient_vgqql")
-joint_mode = 2
-sharp_limit = 0.0
-round_precision = 1
-antialiased = true
-script = ExtResource("3_6t5aa")
-length = 18
-metadata/_custom_type_script = "uid://br67kd68yk2s5"
-
-[connection signal="timeout" from="PassiveHeal" to="." method="_on_passive_heal_timeout"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6t5aa")
