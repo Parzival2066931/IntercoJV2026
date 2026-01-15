@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://da1tdl7nqi5bb"]
 
-[ext_resource type="PackedScene" uid="uid://cx68ypgcfncjn" path="res://Scenes/enemy.tscn" id="1_8q2e4"]
+[ext_resource type="PackedScene" uid="uid://cx68ypgcfncjn" path="res://Scenes/EnemyScenes/enemy.tscn" id="1_8q2e4"]
 [ext_resource type="Texture2D" uid="uid://b5vj6ok755hvo" path="res://Assets/Sprites/ennemie_base.png" id="2_iof0o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iof0o"]

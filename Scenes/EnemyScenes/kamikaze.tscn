@@ -1,10 +1,10 @@
 [gd_scene load_steps=59 format=3 uid="uid://dve8qaanc0grf"]
 
-[ext_resource type="PackedScene" uid="uid://cx68ypgcfncjn" path="res://Scenes/enemy.tscn" id="1_nrulw"]
+[ext_resource type="PackedScene" uid="uid://cx68ypgcfncjn" path="res://Scenes/EnemyScenes/enemy.tscn" id="1_nrulw"]
 [ext_resource type="Texture2D" uid="uid://r5g0xkhiw17a" path="res://Assets/Sprites/Explosion_animation_sprite.png" id="2_7x8fp"]
 [ext_resource type="Texture2D" uid="uid://kxsapdiuwm4v" path="res://Assets/Sprites/Kamikaz.png" id="2_b1fjb"]
 [ext_resource type="Script" uid="uid://dj1hqyeb6f2t1" path="res://Script/EnemyScripts/kamikaze.gd" id="3_shlsi"]
-[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://addons/trail_2d/trail_2d.gd" id="5_mumnr"]
+[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://Addons/trail_2d/trail_2d.gd" id="5_mumnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mumnr"]
 
