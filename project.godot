@@ -22,7 +22,3 @@ window/size/viewport_height=360
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0

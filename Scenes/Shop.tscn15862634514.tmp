@@ -15,10 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i4qx4")
-reroll_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/Reroll")
-item1_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList/ShipCards3")
-item2_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList/ShipCards")
-item3_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList/ShipCards2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -72,10 +68,10 @@ layout_mode = 2
 layout_mode = 2
 text = "55 stars"
 
-[node name="Reroll" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header"]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header"]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "Relancer"
+text = "Reroll"
 
 [node name="Body" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -152,11 +148,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StatsContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StatsPanel" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide/StatsContainer" instance=ExtResource("3_i4qx4")]
+[node name="StatsPanel" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide/HBoxContainer" instance=ExtResource("3_i4qx4")]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -168,5 +164,3 @@ alignment = 2
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide/VBoxContainer"]
 layout_mode = 2
 text = "Continuer"
-
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/Reroll" to="." method="_on_reroll_button_pressed"]

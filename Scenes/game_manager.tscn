@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://be0f35d4q7al3"]
+
+[ext_resource type="Script" uid="uid://b0y2c01johpbf" path="res://script/game_manager.gd" id="1_oj352"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_oj352")
+
+[node name="coinCollected" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Spawner" type="Node2D" parent="."]
+
+[node name="Round_Timer" type="Timer" parent="."]
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+
+[node name="MusicPlayer" type="Node2D" parent="."]
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="MusicPlayer"]
+
+[node name="ShopTheme" type="AudioStreamPlayer2D" parent="MusicPlayer"]

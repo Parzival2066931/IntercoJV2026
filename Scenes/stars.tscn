@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d0ciogfna65mr"]
+
+[node name="Stars" type="HBoxContainer"]
+
+[node name="starsImg" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="starsAmount" type="Label" parent="."]
+layout_mode = 2
+text = "0"

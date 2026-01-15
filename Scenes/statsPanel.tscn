@@ -6,7 +6,6 @@ font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_7vdni"]
 line_spacing = 0.0
-font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_5n8mb"]
 line_spacing = 0.0
@@ -14,10 +13,9 @@ font_size = 10
 
 [node name="StatsPanel" type="PanelContainer"]
 anchors_preset = -1
-anchor_right = 0.24200001
-anchor_bottom = 0.70000005
-offset_right = 0.11999512
-offset_bottom = -1.5258789e-05
+anchor_right = 0.275
+anchor_bottom = 0.697
+offset_bottom = 0.07998657
 grow_horizontal = 2
 grow_vertical = 2
 
