@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx68ypgcfncjn"]
+
+[ext_resource type="Script" uid="uid://dmgy215rukdvs" path="res://Script/EnemyScripts/enemy.gd" id="1_hghv2"]
+[ext_resource type="PackedScene" uid="uid://bt3vp6644mvqy" path="res://Scenes/star.tscn" id="2_1f0kj"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("1_hghv2")
+loot = ExtResource("2_1f0kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="Health" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
