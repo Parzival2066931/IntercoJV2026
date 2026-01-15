@@ -26,7 +26,6 @@ func _ready() -> void:
 	player = get_tree().current_scene.get_node("Player") 
 	game_manager = get_tree().current_scene.get_node("GameManager")
 
-
 func display_item(item: BaseItem):
 	buy_button.text = "Buy"
 	buy_button.disabled = false
