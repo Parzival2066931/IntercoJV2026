@@ -1,13 +1,18 @@
-[gd_scene format=3 uid="uid://c1lvlkukik05g"]
+[gd_scene load_steps=2 format=3 uid="uid://c1lvlkukik05g"]
+
+[ext_resource type="Script" uid="uid://crdskj8rxtv2o" path="res://script/cardBuilder.gd" id="1_2qhf5"]
 
 [node name="ShipCards" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -447.0
-offset_bottom = -76.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = -433.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2qhf5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -54,4 +59,4 @@ alignment = 1
 
 [node name="BuyButton" type="Button" parent="MarginContainer/Item/ItemFoot"]
 layout_mode = 2
-text = "Acheter"
+text = "(icon+ pricing)"
