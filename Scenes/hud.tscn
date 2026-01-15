@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://218cs6vd2jjp"]
+
+[ext_resource type="Script" uid="uid://b1wuoykmwgh6o" path="res://Script/hud.gd" id="1_6fbih"]
+[ext_resource type="PackedScene" uid="uid://jtcut4im3ye3" path="res://Scenes/stars_label.tscn" id="1_e0onf"]
+[ext_resource type="FontFile" uid="uid://dfilhwpycnn0t" path="res://Assets/Fonts/advanced_pixel-7.ttf" id="2_fccik"]
+[ext_resource type="Script" uid="uid://t486d2lo8c4r" path="res://Script/game_over.gd" id="3_bjfho"]
+[ext_resource type="PackedScene" uid="uid://tvhv5g81g72q" path="res://Scenes/menu.tscn" id="5_t1xeu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjfho"]
+font = ExtResource("2_fccik")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fbih"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1xeu"]
+font = ExtResource("2_fccik")
+font_size = 25
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_6fbih")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.2509804, 0.3882353)
+
+[node name="RoundsControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="MarginContainer" parent="RoundsControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundsControl/TopLeft"]
+layout_mode = 2
+
+[node name="PlayerHealth" type="TextureProgressBar" parent="RoundsControl/TopLeft/VBoxContainer"]
+layout_mode = 2
+
+[node name="HpLabel" type="Label" parent="RoundsControl/TopLeft/VBoxContainer/PlayerHealth"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Stars_label" parent="RoundsControl/TopLeft/VBoxContainer" instance=ExtResource("1_e0onf")]
+layout_mode = 2
+
+[node name="ButtomCenter" type="MarginContainer" parent="RoundsControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Current_Round" type="Label" parent="RoundsControl/ButtomCenter"]
+layout_mode = 2
+text = "14"
+label_settings = SubResource("LabelSettings_bjfho")
+horizontal_alignment = 1
+
+[node name="TopRight" type="MarginContainer" parent="RoundsControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_right = 16
+
+[node name="Round_Timer" type="Label" parent="RoundsControl/TopRight"]
+layout_mode = 2
+text = "00:00"
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_bjfho")
+
+[node name="Panel" type="PanelContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6fbih")
+
+[node name="VBox" type="VBoxContainer" parent="GameOver/Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/Panel/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/Panel/VBox/MarginContainer"]
+layout_mode = 2
+text = "Échec de la mission"
+label_settings = SubResource("LabelSettings_t1xeu")
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="GameOver/Panel/VBox"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="GameOver/Panel/VBox"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Recommencer"
+
+[node name="MenuButton" type="Button" parent="GameOver/Panel/VBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Menu"
+
+[node name="QuitButton" type="Button" parent="GameOver/Panel/VBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quitter"
+
+[node name="Menu" parent="." instance=ExtResource("5_t1xeu")]
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 1.0
+
+[connection signal="pressed" from="GameOver/Panel/VBox/RetryButton" to="GameOver" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOver/Panel/VBox/MenuButton" to="GameOver" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameOver/Panel/VBox/QuitButton" to="GameOver" method="_on_quit_button_pressed"]
+
+[editable path="RoundsControl/TopLeft/VBoxContainer/Stars_label"]
+[editable path="Menu"]
