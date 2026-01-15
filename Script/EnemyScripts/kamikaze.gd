@@ -12,9 +12,13 @@ class_name Kamikaze
 var hit_targets := {}
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
+	print("READY node=", name,
+		" script_path=", (get_script() as Script).resource_path,
+		" scene=", scene_file_path,
+		" class=", get_class()
+	)
 	super()
-	#print("Kamikaze Prêt")
 	die_animation.hide()
 	
 @warning_ignore("unused_parameter")
@@ -89,7 +93,7 @@ func _apply_explosion_to(body: Node2D):
 	
 	if body.has_method("is_attacked"):
 		explosion_shape.set_deferred("disabled", true)
-		body.is_attacked(damage * 2)
+		body.is_attacked(damage)
 	
 func _on_explosion_range_body_entered(body: Node2D) -> void:
 	_apply_explosion_to(body)

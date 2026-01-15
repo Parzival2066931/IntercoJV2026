@@ -42,7 +42,11 @@ func update_direction(vec: Vector2):
 	else:
 		# y positif = bas (front), y négatif = haut (back)
 		facing = "front" if vec.y >= 0 else "back"
-		
+
+
+func take_damage(damage: float):
+	is_attacked(damage)
+
 func is_attacked(damage: float):
 	stats.current_hp -= damage * (15.0 / (stats.armor + 15))
 	hp_changed.emit(stats.current_hp, stats.max_hp)

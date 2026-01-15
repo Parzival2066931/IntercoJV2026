@@ -34,6 +34,7 @@ zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_v0iea")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -41,6 +42,7 @@ collision_layer = 2
 collision_mask = 16
 
 [node name="Hurtshape" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 shape = SubResource("CircleShape2D_f60y1")
 
 [node name="PassiveHeal" type="Timer" parent="."]
