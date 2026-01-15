@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://4g1rv2nnt5th"]
+
+[ext_resource type="PackedScene" uid="uid://dgyonusdy4y23" path="res://Scenes/Shop.tscn" id="1_pb756"]
+
+[node name="MondeAlex" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Shop" parent="UI" instance=ExtResource("1_pb756")]
