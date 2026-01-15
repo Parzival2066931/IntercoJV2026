@@ -15,7 +15,6 @@ height = 50.0
 
 [node name="LazerEnemy" instance=ExtResource("1_8iusy")]
 script = ExtResource("2_f008i")
-loot = null
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_bd7ig")

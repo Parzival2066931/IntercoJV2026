@@ -31,9 +31,10 @@ func _physics_process(delta: float) -> void:
 	var dir_to_player = to_player.normalized()
 
 		
-	look_at(player.global_position)
 	
 	if not is_dying:
+		look_at(player.global_position)
+		
 		velocity = dir_to_player * speed
 		move_and_slide()
 

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://bwwncgwh7ngb5"]
+[gd_scene load_steps=11 format=4 uid="uid://bwwncgwh7ngb5"]
 
 [ext_resource type="Script" uid="uid://dk6qtabiijebj" path="res://Script/monde_tomy.gd" id="1_2mprf"]
 [ext_resource type="PackedScene" uid="uid://dhi81cf5cb60j" path="res://Scenes/player.tscn" id="1_mcss2"]
 [ext_resource type="Texture2D" uid="uid://dvxbxj7oux3uo" path="res://Assets/Sprites/fond_fond.png" id="2_v5iw4"]
+[ext_resource type="Resource" uid="uid://0u7smregwaty" path="res://Resources/player_stats.tres" id="4_opnbj"]
 [ext_resource type="PackedScene" uid="uid://218cs6vd2jjp" path="res://Scenes/hud.tscn" id="4_v5iw4"]
+[ext_resource type="Resource" path="res://Resources/railgun.tres" id="5_05b4r"]
 [ext_resource type="PackedScene" uid="uid://be0f35d4q7al3" path="res://Scenes/game_manager.tscn" id="5_opnbj"]
 [ext_resource type="Resource" uid="uid://vmck0rc67x0k" path="res://Resources/game_settings.tres" id="6_05b4r"]
 
@@ -986,6 +988,10 @@ tile_map_data = PackedByteArray("AADP/+H/AAAEAAUAAADP/+L/AAAEAAYAAADP/+P/AAAEAAc
 tile_set = SubResource("TileSet_05b4r")
 
 [node name="Player" parent="." instance=ExtResource("1_mcss2")]
+base_stats = ExtResource("4_opnbj")
+
+[node name="TurretManager" parent="Player" index="4"]
+starting_turret = ExtResource("5_05b4r")
 
 [node name="HUD" parent="." instance=ExtResource("4_v5iw4")]
 
@@ -998,6 +1004,7 @@ gm_path = NodePath("../../GameManager")
 [node name="GameManager" parent="." instance=ExtResource("5_opnbj")]
 settings = ExtResource("6_05b4r")
 
+[editable path="Player"]
 [editable path="HUD"]
 [editable path="HUD/RoundsControl/TopLeft/VBoxContainer/Stars_label"]
 [editable path="HUD/Menu"]

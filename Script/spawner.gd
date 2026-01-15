@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func spawn(objet: PackedScene, pos: Vector2) -> Node:
+	print("Objet reçu: ", objet)
 	var objet_a_spawn = objet.instantiate()
 	objet_a_spawn.global_position = pos
 	get_parent().call_deferred("add_child", objet_a_spawn)
