@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://08ptw22ai7ih"]
+[gd_scene load_steps=0 format=3 uid="uid://08ptw22ai7ih"]
 
 [node name="StatsContainer" type="Control"]
 layout_mode = 3

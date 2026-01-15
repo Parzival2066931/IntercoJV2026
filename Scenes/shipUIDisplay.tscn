@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://1g77t8yxwnvt"]
+[gd_scene load_steps=0 format=3 uid="uid://1g77t8yxwnvt"]
 
 [node name="ShipUiDisplay" type="Control"]
 layout_mode = 3

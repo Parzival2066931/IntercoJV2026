@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://i1yd7vl8umte"]
+
+[ext_resource type="PackedScene" uid="uid://blucnhdiq6dqh" path="res://Scenes/turret.tscn" id="1_dahhi"]
+[ext_resource type="Script" path="res://Script/baller_turret.gd" id="2_nktnq"]
+[ext_resource type="Resource" path="res://Resources/baller_turret.tres" id="3_5vmga"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/canon_liam_calisss.png" id="3_ufgpf"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/canon_boulelaser.png" id="4_5vmga"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miue8"]
+atlas = ExtResource("4_5vmga")
+region = Rect2(24, 16, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a12jt"]
+atlas = ExtResource("4_5vmga")
+region = Rect2(24, 32, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1bbf"]
+atlas = ExtResource("4_5vmga")
+region = Rect2(24, 48, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4eh1"]
+atlas = ExtResource("4_5vmga")
+region = Rect2(24, 64, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_753y1"]
+atlas = ExtResource("4_5vmga")
+region = Rect2(24, 80, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irfee"]
+atlas = ExtResource("4_5vmga")
+region = Rect2(24, 96, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w00me"]
+atlas = ExtResource("4_5vmga")
+region = Rect2(24, 112, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yk1uv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miue8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a12jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1bbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4eh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_753y1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irfee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w00me")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="BallerTurret" instance=ExtResource("1_dahhi")]
+script = ExtResource("2_nktnq")
+turret_stats = ExtResource("3_5vmga")
+
+[node name="TurretCanon" parent="Pivot" index="0"]
+position = Vector2(3, 0)
+texture = ExtResource("3_ufgpf")
+
+[node name="Muzzle" parent="Pivot" index="1"]
+position = Vector2(11.5, 0)
+
+[node name="BallAnimation" type="AnimatedSprite2D" parent="Pivot" index="4"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(11, 0)
+sprite_frames = SubResource("SpriteFrames_yk1uv")
+frame = 6
+frame_progress = 1.0

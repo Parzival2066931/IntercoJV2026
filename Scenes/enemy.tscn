@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://earsbvndetrm"]
+
+[ext_resource type="Script" path="res://Script/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/icon.svg" id="1_hghv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
+size = Vector2(129, 126)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_1f0kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hghv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1f0kj")

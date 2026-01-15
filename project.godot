@@ -22,3 +22,12 @@ window/size/viewport_height=360
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://bn4rx1a75fwp5"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdquest_colorpicker_presets/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
