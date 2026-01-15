@@ -1,13 +1,28 @@
-[gd_scene format=3 uid="uid://dhi81cf5cb60j"]
+[gd_scene load_steps=3 format=3 uid="uid://dhi81cf5cb60j"]
 
-[node name="Player" type="CharacterBody2D"]
+[ext_resource type="PackedScene" uid="uid://bcsuflg3riw4e" path="res://Scenes/turret_manager.tscn" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bbor0y2vtlan1" path="res://Assets/Sprites/icon.svg" id="2_6t5aa"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Player" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="TurretManager" parent="." instance=ExtResource("1_cvnsp")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="TurretsPositions" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Pos1" type="Marker2D" parent="TurretsPositions"]
+position = Vector2(-50, -50)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Pos2" type="Marker2D" parent="TurretsPositions"]
+position = Vector2(51, -48)
+
+[node name="Pos3" type="Marker2D" parent="TurretsPositions"]
+position = Vector2(-2, 0)
+
+[node name="Pos4" type="Marker2D" parent="TurretsPositions"]
+position = Vector2(-49, 50)
+
+[node name="Pos5" type="Marker2D" parent="TurretsPositions"]
+position = Vector2(48, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6t5aa")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcsuflg3riw4e"]
+
+[ext_resource type="Script" uid="uid://c4udllupqj8ni" path="res://Script/turret_manager.gd" id="1_hmpng"]
+
+[node name="TurretManager" type="Node2D"]
+script = ExtResource("1_hmpng")

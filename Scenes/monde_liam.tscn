@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://dmilagllrkefp"]
+
+[ext_resource type="PackedScene" uid="uid://cx68ypgcfncjn" path="res://Scenes/enemy.tscn" id="1_amci5"]
+[ext_resource type="PackedScene" uid="uid://b4d2m3fbqlalt" path="res://Scenes/turret.tscn" id="2_t5ura"]
+[ext_resource type="Texture2D" uid="uid://djblnmtwbe5fd" path="res://Assets/Sprites/easter_egg.png" id="3_t5ura"]
+[ext_resource type="PackedScene" uid="uid://dhi81cf5cb60j" path="res://Scenes/player.tscn" id="5_sjy0f"]
+[ext_resource type="Resource" uid="uid://bom1v1lv5rrpc" path="res://Resources/lazer_projectile.tres" id="6_pl01f"]
+[ext_resource type="PackedScene" uid="uid://nxywrvlnttvw" path="res://Scenes/baller_turret.tscn" id="7_pl01f"]
+[ext_resource type="Resource" uid="uid://becglkq8to3n5" path="res://Resources/railgun.tres" id="8_vrvms"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rr2n"]
+atlas = ExtResource("3_t5ura")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjy0f"]
+atlas = ExtResource("3_t5ura")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgtsu"]
+atlas = ExtResource("3_t5ura")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl01f"]
+atlas = ExtResource("3_t5ura")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrvms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rr2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjy0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgtsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl01f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="MondeLiam" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(97, 73)
+sprite_frames = SubResource("SpriteFrames_vrvms")
+frame_progress = 0.5499616
+
+[node name="Enemy" parent="." instance=ExtResource("1_amci5")]
+position = Vector2(139, 202)
+
+[node name="Turret4" parent="." instance=ExtResource("2_t5ura")]
+position = Vector2(271, 65)
+turret_stats = ExtResource("8_vrvms")
+
+[node name="Player" parent="." instance=ExtResource("5_sjy0f")]
+z_index = -1
+position = Vector2(362, 174)
+
+[node name="TurretManager" parent="Player" index="0"]
+z_index = 1
+starting_turret = ExtResource("6_pl01f")
+
+[node name="BallerTurret" parent="." instance=ExtResource("7_pl01f")]
+position = Vector2(178, 80)
+
+[editable path="Player"]
