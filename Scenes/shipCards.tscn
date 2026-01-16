@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1lvlkukik05g"]
+
+[ext_resource type="Script" uid="uid://crdskj8rxtv2o" path="res://Script/cardBuilder.gd" id="1_2qhf5"]
+[ext_resource type="Texture2D" uid="uid://bn4rx1a75fwp5" path="res://Assets/Sprites/souris.png" id="2_ok6gm"]
+[ext_resource type="PackedScene" uid="uid://dljhh3hdatrq8" path="res://Scenes/starsUi.tscn" id="2_ptpfj"]
+[ext_resource type="FontFile" uid="uid://dfilhwpycnn0t" path="res://Assets/Fonts/advanced_pixel-7.ttf" id="3_urad8"]
+[ext_resource type="Texture2D" uid="uid://b2xbn1d5wu3fk" path="res://Assets/Sprites/hublow_MC_prise2.png" id="5_urad8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52f2j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1koru"]
+bg_color = Color(0.7091416, 0.7091416, 0.7091416, 0.9882353)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_3crlj"]
+font = ExtResource("3_urad8")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_ok6gm"]
+font = ExtResource("3_urad8")
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3crlj"]
+bg_color = Color(0.23392546, 0.23392549, 0.23392531, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="ShipCards" type="PanelContainer"]
+offset_right = 139.0
+offset_bottom = 183.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_52f2j")
+script = ExtResource("1_2qhf5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Item" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemHeader" type="HBoxContainer" parent="MarginContainer/Item"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Item/ItemHeader"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1koru")
+
+[node name="ItemDisplay" type="TextureRect" parent="MarginContainer/Item/ItemHeader/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_ok6gm")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Itemname" type="Label" parent="MarginContainer/Item/ItemHeader"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "(nom)"
+label_settings = SubResource("LabelSettings_3crlj")
+autowrap_mode = 3
+
+[node name="ItemBody" type="HBoxContainer" parent="MarginContainer/Item"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Description" type="Label" parent="MarginContainer/Item/ItemBody"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "a ajouter"
+label_settings = SubResource("LabelSettings_ok6gm")
+autowrap_mode = 2
+
+[node name="ItemFoot" type="HBoxContainer" parent="MarginContainer/Item"]
+z_index = 2
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="StarsUi" parent="MarginContainer/Item/ItemFoot" instance=ExtResource("2_ptpfj")]
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="MarginContainer/Item/ItemFoot"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuyButton" type="Button" parent="MarginContainer/Item/ItemFoot"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_urad8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3crlj")
+text = "Acheter"
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0.05490196, 0.023529412, 1)
+z_index = 1
+layout_mode = 2
+texture = ExtResource("5_urad8")
+
+[connection signal="pressed" from="MarginContainer/Item/ItemFoot/BuyButton" to="." method="_on_buy_pressed"]
+
+[editable path="MarginContainer/Item/ItemFoot/StarsUi"]

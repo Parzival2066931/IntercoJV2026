@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://x3vpbxk4rd8k"]
+
+[ext_resource type="Texture2D" uid="uid://b6hpy04obo48j" path="res://Assets/Sprites/satellite.png" id="1_vgy8l"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_f7ow2"]
+
+[resource]
+script = ExtResource("2_f7ow2")
+name = "Satellite"
+price = 8
+icon = ExtResource("1_vgy8l")
+rarity = 2

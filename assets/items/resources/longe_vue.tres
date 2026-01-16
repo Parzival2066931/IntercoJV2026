@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://gcymoy2kn5x7"]
+
+[ext_resource type="Texture2D" uid="uid://c44dv6p04lav2" path="res://Assets/Sprites/longue_vue.png" id="1_606n8"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_k6j63"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_k6j63")
+armor = 3
+attack_range = 500
+luck = 10
+name = "Longue vue"
+price = 10
+icon = ExtResource("1_606n8")
+rarity = 5

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://cl8bipgf74m62"]
+
+[ext_resource type="Texture2D" uid="uid://csssjeh7tfwh3" path="res://Assets/Sprites/biere.png" id="1_m1a1k"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_guylh"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_guylh")
+hp = -20
+damage_percent = 0.10000000000000009
+speed_percent = -0.020000000000000018
+attack_speed_percent = 0.06000000000000005
+name = "Biere Viellote"
+price = 10
+icon = ExtResource("1_m1a1k")
+rarity = 5

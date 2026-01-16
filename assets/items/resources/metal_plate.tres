@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://dx3nfybjjbrxs"]
+
+[ext_resource type="Texture2D" uid="uid://bdcv5etiyi26s" path="res://Assets/Sprites/plaque_metal_Shield.png" id="1_tdm10"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_36rnv"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_36rnv")
+armor = 10
+name = "Plaque"
+price = 7
+icon = ExtResource("1_tdm10")
+rarity = 5

@@ -1,0 +1,170 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgyonusdy4y23"]
+
+[ext_resource type="Script" uid="uid://cfl1har202oyc" path="res://Script/shopManager.gd" id="1_i4qx4"]
+[ext_resource type="PackedScene" uid="uid://c1lvlkukik05g" path="res://Scenes/shipCards.tscn" id="1_kjfcx"]
+[ext_resource type="FontFile" uid="uid://dfilhwpycnn0t" path="res://Assets/Fonts/advanced_pixel-7.ttf" id="2_ckylj"]
+[ext_resource type="PackedScene" uid="uid://dljhh3hdatrq8" path="res://Scenes/starsUi.tscn" id="2_e5ji4"]
+[ext_resource type="PackedScene" uid="uid://1g77t8yxwnvt" path="res://Scenes/shipUIDisplay.tscn" id="2_lagin"]
+[ext_resource type="PackedScene" uid="uid://by7f7g68lke0e" path="res://Scenes/statsPanel.tscn" id="3_i4qx4"]
+[ext_resource type="PackedScene" uid="uid://vs8cwlal51w1" path="res://Scenes/ItemSlot.tscn" id="4_wndna"]
+[ext_resource type="Script" uid="uid://8tkxc23nsbtu" path="res://Script/grid_container.gd" id="5_ckylj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wndna"]
+bg_color = Color(0.6, 0.6, 0.6, 0.23921569)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2aaoe"]
+font = ExtResource("2_ckylj")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_ct2yw"]
+font = ExtResource("2_ckylj")
+font_size = 24
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4qx4")
+rounds_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/NextRound")
+cash_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi/Amount")
+reroll_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/Reroll")
+stats_display = NodePath("PanelContainer/MarginContainer/HBoxContainer/StatsSide/StatsContainer/StatsPanel")
+item1_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList/ShipCards1")
+item2_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList/ShipCards2")
+item3_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList/ShipCards3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wndna")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 41)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="NextRound" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header"]
+layout_mode = 2
+text = "Boutique (Vague 1)"
+label_settings = SubResource("LabelSettings_2aaoe")
+
+[node name="StarsUi" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header" instance=ExtResource("2_e5ji4")]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="stars" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi" index="0"]
+stretch_mode = 5
+
+[node name="Amount" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi" index="1"]
+label_settings = SubResource("LabelSettings_ct2yw")
+
+[node name="Reroll" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_ckylj")
+theme_override_font_sizes/font_size = 24
+text = "Relancer"
+
+[node name="Body" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShopList" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+columns = 3
+
+[node name="ShipCards1" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList" instance=ExtResource("1_kjfcx")]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+
+[node name="ShipCards2" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList" instance=ExtResource("1_kjfcx")]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+
+[node name="ShipCards3" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList" instance=ExtResource("1_kjfcx")]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Footer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Footer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 8
+script = ExtResource("5_ckylj")
+item_slot_scene = ExtResource("4_wndna")
+
+[node name="ShipContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShipUiDisplay" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Footer/ShipContainer" instance=ExtResource("2_lagin")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatsSide" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatsContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide"]
+layout_mode = 2
+
+[node name="StatsPanel" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide/StatsContainer" instance=ExtResource("3_i4qx4")]
+custom_minimum_size = Vector2(0, 264)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide"]
+layout_mode = 2
+alignment = 2
+
+[node name="Next" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Continuer"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/Reroll" to="." method="_on_reroll_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/StatsSide/VBoxContainer/Next" to="." method="_on_next_round_pressed"]
+
+[editable path="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi"]

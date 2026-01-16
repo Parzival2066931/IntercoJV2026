@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://dkcner823c742"]
+
+[ext_resource type="Texture2D" uid="uid://c0fdaoj4djwfj" path="res://Assets/Sprites/canon_dgt.png" id="1_itbnv"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_onyx6"]
+
+[resource]
+script = ExtResource("2_onyx6")
+damage = 10
+attack_range = -50
+damage_percent = 0.020000000000000018
+name = "Canon Surcharger"
+icon = ExtResource("1_itbnv")
+rarity = 5

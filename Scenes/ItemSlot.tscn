@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://vs8cwlal51w1"]
+
+[ext_resource type="Texture2D" uid="uid://bbor0y2vtlan1" path="res://Assets/Sprites/icon.svg" id="1_4ef7o"]
+[ext_resource type="Script" uid="uid://crct3ptk4j4yj" path="res://Script/itemSlot.gd" id="1_i6rfv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ef7o"]
+line_spacing = 0.0
+font_size = 10
+
+[node name="ItemSlot" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchor_right = 0.05
+anchor_bottom = 0.089
+offset_bottom = -0.040000916
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_i6rfv")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4ef7o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemNumber" type="Label" parent="ItemTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "x2"
+label_settings = SubResource("LabelSettings_4ef7o")
+horizontal_alignment = 2
+vertical_alignment = 2
