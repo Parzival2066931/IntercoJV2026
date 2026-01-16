@@ -113,8 +113,18 @@ func shoot():
 				stats.attack_range
 			)
 		
+		bullet.modulate = $Base.modulate
+		
 		get_tree().current_scene.add_child(bullet)
 	$FireSound.volume_db = stats.sound_volume
 	$FireSound.play()
 	#$FireSound.pitch_scale = randf_range(0.8, 1.2)
 	%AttackTimer.start(stats.fire_rate)
+
+func change_color(color : Color):
+	$Base.modulate = color
+	if shooting_style == TurretStats.Shooting_style.LAZER:
+		lazer.set_color(color)
+
+func modify_turret(turret_stats : TurretStats):
+	stats.damage = turret_stats.damage

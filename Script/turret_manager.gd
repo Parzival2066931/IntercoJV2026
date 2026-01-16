@@ -19,10 +19,10 @@ func _ready() -> void:
 	turrets_positions = player.get_node("TurretsPositions")
 	turrets.resize(5)
 	add_turret(starting_turret, 2)
-	add_new_turret(starting_turret)
-	add_new_turret(starting_turret)
-	add_new_turret(starting_turret)
-	add_new_turret(starting_turret)
+	#add_new_turret(starting_turret)
+	#add_new_turret(starting_turret)
+	#add_new_turret(starting_turret)
+	#add_new_turret(starting_turret)
 	
 func add_new_turret(turret_stats : TurretStats):
 	add_turret(turret_stats, get_first_empty_turret())
@@ -51,3 +51,22 @@ func get_first_empty_turret() -> int:
 		if turrets[i] == null:
 			return i
 	return -1
+	
+func get_turrets():
+	return get_children()
+	
+func change_color(color : Color, index : int):
+	turrets[index].change_color(color)
+
+func modify_turret(new_stats : TurretStats):
+	for i in range(turrets.size()):
+		var t = turrets[i]
+		if t != null and t.turret_stats != null:
+			if t.turret_stats.resource_path == new_stats.resource_path:
+				update_turret_at_index(i, new_stats)
+				return
+	
+	add_new_turret(new_stats)
+
+func update_turret_at_index(index : int, new_stats : TurretStats):
+	turrets[index].modify_turret(new_stats) 

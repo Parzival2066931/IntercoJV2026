@@ -7,6 +7,7 @@ enum Shooting_style { LAZER, PROJECTILE }
 @export var weapon_name: String = "Arme"
 @export var sprite: Texture2D
 @export var bullet_sprite: Texture2D
+@export var bullet_color : Color = "FFFFFF"
 @export var visual_scale: Vector2 = Vector2(1, 1)
 @export var flip_h: bool = false
 @export var muzzle_offset: Vector2 = Vector2.ZERO
