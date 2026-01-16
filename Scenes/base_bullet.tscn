@@ -3,29 +3,14 @@
 [ext_resource type="Script" uid="uid://d3cms136l0hj0" path="res://Script/base_bullet.gd" id="1_gq5uc"]
 [ext_resource type="Texture2D" uid="uid://d8jsnexwcuun" path="res://Assets/Sprites/projectile_laser (1).png" id="1_w2qld"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq5uc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfv0s"]
 
 [node name="BaseBullet" type="Area2D"]
 script = ExtResource("1_gq5uc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("1_w2qld")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_gq5uc")
-[ext_resource type="Script" uid="uid://d3cms136l0hj0" path="res://Script/base_bullet.gd" id="1_w2qld"]
-[ext_resource type="Texture2D" uid="uid://d8jsnexwcuun" path="res://Assets/Sprites/projectile_laser (1).png" id="2_gq5uc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfv0s"]
-
-[node name="BaseBullet" type="Area2D"]
-script = ExtResource("1_w2qld")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.23529412, 0, 1)
-texture = ExtResource("2_gq5uc")
+texture = ExtResource("1_w2qld")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

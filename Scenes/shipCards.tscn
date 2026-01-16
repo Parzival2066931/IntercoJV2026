@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkt0plx36ewla"]
+
+[ext_resource type="Script" path="res://script/cardBuilder.gd" id="1_2qhf5"]
+
+[node name="ShipCards" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = -433.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qhf5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(1, 0, 1, 0.5254902)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Item" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemHeader" type="HBoxContainer" parent="MarginContainer/Item"]
+layout_mode = 2
+
+[node name="ItemDisplay" type="TextureRect" parent="MarginContainer/Item/ItemHeader"]
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="MarginContainer/Item/ItemHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Itemname" type="Label" parent="MarginContainer/Item/ItemHeader"]
+layout_mode = 2
+text = "(nom)"
+
+[node name="ItemBody" type="HBoxContainer" parent="MarginContainer/Item"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Description" type="Label" parent="MarginContainer/Item/ItemBody"]
+layout_mode = 2
+text = "a ajouter"
+
+[node name="ItemFoot" type="HBoxContainer" parent="MarginContainer/Item"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="BuyButton" type="Button" parent="MarginContainer/Item/ItemFoot"]
+layout_mode = 2
+text = "(icon+ pricing)"

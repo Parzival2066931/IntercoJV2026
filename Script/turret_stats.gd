@@ -11,8 +11,9 @@ enum Shooting_style { LAZER, PROJECTILE }
 @export var flip_h: bool = false
 @export var muzzle_offset: Vector2 = Vector2.ZERO
 @export var sprite_offset: Vector2 = Vector2.ZERO
-@export var rotation : float = 0.0
+@export var rotation: float = 0.0
 @export var fire_sound: AudioStream
+@export var sound_volume: float = 0.0
 
 @export_group("Combat")
 @export var damage: float = 10.0

@@ -73,11 +73,26 @@ func attack(enemy):
 func shoot_lazer():
 	if not %AttackTimer.is_stopped():
 		return
+	print(stats.resource_path.get_file())
+	if stats.seperates_lazer_shots == false:
+		if $FireSound.playing:
+			print("pass")
+			pass 
+		else:
+			$FireSound.volume_db = stats.sound_volume
+			$FireSound.play()
+			print("Play")
+	else:
+		$FireSound.volume_db = stats.sound_volume
+		$FireSound.play()
 	lazer.set_is_casting(true)
+	lazer.force_raycast_update()
+	
 	var enemy = lazer.get_collider()
 	if enemy and enemy.has_method("take_damage"):
 		enemy.take_damage(stats.damage)
-		%AttackTimer.start(stats.fire_rate)
+	%AttackTimer.start(stats.fire_rate)
+	
 	if stats.seperates_lazer_shots:
 		await get_tree().create_timer(0.5).timeout
 		lazer.set_is_casting(false)
@@ -99,7 +114,7 @@ func shoot():
 			)
 		
 		get_tree().current_scene.add_child(bullet)
-	$FireSound.volume_db = -25.0
+	$FireSound.volume_db = stats.sound_volume
 	$FireSound.play()
 	#$FireSound.pitch_scale = randf_range(0.8, 1.2)
 	%AttackTimer.start(stats.fire_rate)
