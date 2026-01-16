@@ -63,7 +63,7 @@ func attack(enemy):
 	else:
 		if shooting_style == TurretStats.Shooting_style.LAZER:
 			lazer.set_is_casting(false)
-		$Pivot.global_rotation = 0
+		#$Pivot.global_rotation = 0
 			
 	#if abs(global_rotation) > PI/2:
 		#$Pivot.scale.y = -1
@@ -97,7 +97,9 @@ func shoot():
 				stats.damage,
 				stats.attack_range
 			)
-		
+		bullet.set_collision_layer_value(4, true)
+		bullet.set_collision_mask_value(3, true)
+
 		get_tree().current_scene.add_child(bullet)
 	$FireSound.volume_db = -25.0
 	$FireSound.play()
