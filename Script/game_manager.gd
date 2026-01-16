@@ -13,8 +13,6 @@ enum GameState {
 var state := GameState.MENU
 signal state_changed
 
-# enum Trigger { ONCE, ON_WAVE_START, ON_WAVE_END, ON_KILL, ON_PLAYER_DYING, ON_LEVEL_UP, ON_COIN_PICKED}
-
 signal wave_start
 signal wave_end
 
@@ -22,10 +20,13 @@ signal wave_end
 @onready var spawn_timer := $Spawn_Timer
 @onready var spawner := $Spawner
 @onready var star_collected := $StarCollected
+@export var decollage_path: NodePath
 
+@export var min_delay := 0.1
+@export var max_delay := 0.5
 
 var list_enemies: Array[PackedScene]
-var mini_boss: PackedScene
+var monster_egg: PackedScene
 var round_duration: float
 var base_spawn_interval: float
 var spawn_interval_decrease: float
@@ -35,11 +36,12 @@ var hud_path: NodePath
 var multiplier_per_round: float
 var player: Player
 var hud: Hud
+var decollage: Sprite2D
 
 var amount_of_star = 0
 var time_left: float
-var zone_min := Vector2(-1824, -1050)
-var zone_max := Vector2(2475, 1944)
+var zone_min := Vector2(-3000, -1875)
+var zone_max := Vector2(3000, 1870)
 
 #var owned_items: Array[BaseItem] = []
 
@@ -54,7 +56,7 @@ func _ready() -> void:
 		
 	stats = settings.duplicate()
 	list_enemies = stats.list_enemies
-	mini_boss = stats.miniboss
+	monster_egg = stats.miniboss
 	round_duration = stats.round_duration
 	base_spawn_interval = stats.base_spawn_interval
 	spawn_interval_decrease = stats.spawn_interval_decrease
@@ -63,8 +65,9 @@ func _ready() -> void:
 	hud_path = stats.hud_path
 	multiplier_per_round = stats.multiplier_per_round
 	
-	player = get_node_or_null(settings.player_path) as Player
-	hud = get_node_or_null(settings.hud_path) as Hud
+	player = get_node_or_null(stats.player_path) as Player
+	hud = get_node_or_null(stats.hud_path) as Hud
+	decollage = get_node_or_null(decollage_path)
 	
 	if player == null:
 		print("Player est null")
@@ -80,16 +83,10 @@ func _ready() -> void:
 	player.hp_changed.connect(on_player_hp_changed)
 	player.player_died.connect(on_game_over)
 	
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		if enemy.name == "MiniBoss":
-			enemy.boss_died.connect(on_mini_boss_died)
-		#else:
-			#if enemy.name == "FastStealerEnemy":
-				#enemy.stealing_money.connect(on_money_steal)
-			#enemy.enemy_died.connect(on_enemy_died)
 	spawner.loot_spawned.connect(on_loot_spawned)
+	hud.spawn_ship_request.connect(on_launching_ship)
 	
-	#hud.set_hp(player.stats.current_hp, player.stats.max_hp)
+	hud.set_hp(player.stats.current_hp, player.stats.max_hp)
 	hud.set_cash(amount_of_star)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -110,7 +107,7 @@ func set_state(new_state: GameState) -> void:
 func reset_game():
 	stats = settings.duplicate()
 	list_enemies = stats.list_enemies
-	mini_boss = stats.miniboss
+	monster_egg = stats.miniboss
 	round_duration = stats.round_duration
 	base_spawn_interval = stats.base_spawn_interval
 	spawn_interval_decrease = stats.spawn_interval_decrease
@@ -125,6 +122,8 @@ func reset_game():
 		enemy.queue_free()
 	for loot in get_tree().get_nodes_in_group("loots"):
 		loot.queue_free()
+		
+	decollage.hide()
 	
 	set_state(GameState.IN_ROUND)
 
@@ -137,51 +136,41 @@ func start_round():
 	multiplier_per_round = get_round_multiplier(current_round)
 	print("Enemies are stronger")
 	print("Diff: ", multiplier_per_round)
-	match current_round:
-		6:
-			pass
-			#list_enemies.append(preload("res://scenes/EnemyScenes/fast_stealer_enemy.tscn"))
-		11:
-			list_enemies.append(preload("res://scenes/EnemyScenes/kamikaze.tscn"))
-		16:
-			#potentiellement un 4e type d'ennemi
-			pass
+	if current_round == 11:
+		list_enemies.append(preload("res://scenes/EnemyScenes/kamikaze.tscn"))
 	
-	if current_round % 5 == 0 && current_round != 0:
+	if current_round % 5 == 0 && current_round != 0 && current_round != 20:
 		start_mini_boss_round()
 	else:
-		round_timer.wait_time = round_duration
-		round_timer.start()
-		hud.set_time_left(round_timer.time_left)
-	
 		var interval = max(0.4, base_spawn_interval - (current_round - 1) * spawn_interval_decrease)
 		spawn_timer.wait_time = interval
 		spawn_timer.start()
+		
+	round_timer.wait_time = round_duration
+	round_timer.start()
+	hud.set_time_left(round_timer.time_left)
 
 func start_mini_boss_round():
-	round_timer.stop()
-	hud.hide_timer()
-	var boss = spawner.spawn(mini_boss, get_random_position())
-	boss.player = player
-	boss.stomp_impact.connect(player.on_stomp_impact)
-	print("Camera connecté")
-	boss.stomp_spawn_request.connect(on_boss_stomp_spawn_request)
-	#boss.set_difficulty(multiplier_per_round)
-	boss.call_deferred("set_difficulty", multiplier_per_round)
-	boss.boss_died.connect(on_mini_boss_died)
+	var easter_egg = spawner.spawn(monster_egg, get_random_position())
+	easter_egg.easter_egg_found.connect(on_easter_egg_found)
+	spawn_timer.wait_time = randf_range(min_delay, max_delay)
+	spawn_timer.start()
+
+func on_easter_egg_found(base_loot: int):
+	on_cash_changed(base_loot * current_round / 5)
 
 func random_point_in_circle(center: Vector2, radius: float) -> Vector2:
 	var angle := randf() * TAU
 	var r := sqrt(randf()) * radius
 	return center + Vector2(cos(angle), sin(angle)) * r
 
-func on_boss_stomp_spawn_request(center: Vector2, radius: float):
-	var count_enemies = 4 + randi() % 2
-	for i in range(count_enemies):
-		var new_enemy = list_enemies.pick_random()
-		var enemy = spawner.spawn(new_enemy, random_point_in_circle(center, radius))
-		enemy.enemy_died.connect(on_enemy_died)
-		enemy.set_difficulty(multiplier_per_round)
+#func on_boss_stomp_spawn_request(center: Vector2, radius: float):
+	#var count_enemies = 4 + randi() % 2
+	#for i in range(count_enemies):
+		#var new_enemy = list_enemies.pick_random()
+		#var enemy = spawner.spawn(new_enemy, random_point_in_circle(center, radius))
+		#enemy.enemy_died.connect(on_enemy_died)
+		#enemy.set_difficulty(multiplier_per_round)
 
 func on_mini_boss_died(loots: Array[PackedScene], center: Vector2, radius: float):
 	for loot in loots:
@@ -207,6 +196,11 @@ func on_cash_changed(amount: int):
 		star_collected.pitch_scale = randf_range(0.8, 1.2)
 		star_collected.play()
 
+func on_launching_ship(pos: Vector2, ship: PackedScene):
+	var star_ship = spawner.spawn_ship(ship, pos)
+	star_ship.z_index = 2
+	star_ship.start_game_request.connect(reset_game)
+
 func get_random_position() -> Vector2:
 	var random_x = randf_range(zone_min.x, zone_max.x)
 	var random_y = randf_range(zone_min.y, zone_max.y)
@@ -216,9 +210,6 @@ func spawn_new_enemy():
 	var new_enemy = list_enemies.pick_random()
 	var enemy: Enemy = spawner.spawn(new_enemy, get_random_position())
 	enemy.enemy_died.connect(on_enemy_died)
-	#if enemy.name == "FastStealerEnemy":
-		#print("Je vais te voler")
-		#enemy.stealing_money.connect(on_money_steal)
 	enemy.call_deferred("set_difficulty", multiplier_per_round)
 
 func get_round_multiplier(cur_round: int) -> float:
@@ -228,17 +219,20 @@ func _on_round_timer_timeout() -> void:
 	end_round()
 
 func _on_spawn_timer_timeout() -> void:
-	spawn_new_enemy()
+	if current_round % 5 == 0 && current_round != 0 && current_round != 20:
+		spawner.start_meteor_shower()
+	else:
+		spawn_new_enemy()
 
 func on_player_hp_changed(hp: float, max_hp: float) -> void:
 	pass
-	#hud.set_hp(hp, max_hp)
+	hud.set_hp(hp, max_hp)
 	#var heal_label: PackedScene = preload("res://scenes/heal_label.tscn")
 	#$Spawner.spawn(heal_label, player.global_position + Vector2(0, -100))
 
 func end_round():
 	wave_end.emit()
-	for enemy in get_tree().get_nodes_in_group("Enemies"):
+	for enemy in get_tree().get_nodes_in_group("enemies"):
 		enemy.queue_free()
 	
 	spawn_timer.stop()

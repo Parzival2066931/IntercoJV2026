@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://hnb225453dxw"]
+
+[ext_resource type="Texture2D" uid="uid://dsa2boftw4qg3" path="res://Assets/Sprites/fond_cinematique67(2).png" id="1_4mhud"]
+[ext_resource type="Script" uid="uid://vcc74gjkhifg" path="res://Script/ship_launching.gd" id="1_6x1f0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6x1f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iljy"]
+atlas = ExtResource("1_4mhud")
+region = Rect2(0, 10062, 640, 345)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0feu"]
+atlas = ExtResource("1_4mhud")
+region = Rect2(0, 10407, 640, 345)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pu028"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iljy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0feu")
+}],
+"loop": true,
+"name": &"Trail",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xon5"]
+atlas = ExtResource("1_4mhud")
+region = Rect2(0, 9717, 640, 345)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgb87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xon5")
+}],
+"loop": true,
+"name": &"Ship",
+"speed": 5.0
+}]
+
+[node name="ShipLaunching" type="Area2D"]
+z_index = 6
+script = ExtResource("1_6x1f0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6x1f0")
+
+[node name="Trail" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.5000002, 129)
+scale = Vector2(0.9984375, 1)
+sprite_frames = SubResource("SpriteFrames_pu028")
+animation = &"Trail"
+frame_progress = 0.8568376
+
+[node name="Ship" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sgb87")
+animation = &"Ship"
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

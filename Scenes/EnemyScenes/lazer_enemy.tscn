@@ -5,51 +5,47 @@
 [ext_resource type="Texture2D" uid="uid://b5vj6ok755hvo" path="res://Assets/Sprites/ennemie_base.png" id="3_bd7ig"]
 [ext_resource type="Script" uid="uid://chf61mg3g7pjn" path="res://Script/canons.gd" id="4_u8mej"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iof0o"]
-radius = 20.0
-height = 52.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_8iusy"]
+radius = 24.083189
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_civqh"]
-radius = 17.0
-height = 50.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_f008i"]
+radius = 24.186773
 
 [node name="LazerEnemy" instance=ExtResource("1_8iusy")]
 script = ExtResource("2_f008i")
+min_dist = 300.0
+max_dist = 400.0
 
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_bd7ig")
-
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_iof0o")
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_8iusy")
 
 [node name="HurtboxShape" parent="Hurtbox" index="0"]
-visible = false
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_civqh")
+shape = SubResource("CircleShape2D_f008i")
 
-[node name="Health" parent="." index="3"]
-offset_left = -20.0
-offset_top = -50.0
-offset_right = 20.0
-offset_bottom = -10.0
+[node name="AttackCooldown" type="Timer" parent="." index="2"]
+wait_time = 2.0
+autostart = true
 
-[node name="Canons" type="Node2D" parent="." index="4"]
+[node name="Sprite2D" parent="Pivot" index="0"]
+texture = ExtResource("3_bd7ig")
+
+[node name="Canons" type="Node2D" parent="Pivot" index="1"]
 unique_name_in_owner = true
 script = ExtResource("4_u8mej")
 range = 500.0
 speed = 300.0
 damage = 30.0
 
-[node name="LeftCanon" type="Marker2D" parent="Canons" index="0"]
+[node name="LeftCanon" type="Marker2D" parent="Pivot/Canons" index="0"]
 position = Vector2(19, -14)
 
-[node name="RightCanon" type="Marker2D" parent="Canons" index="1"]
+[node name="RightCanon" type="Marker2D" parent="Pivot/Canons" index="1"]
 position = Vector2(19, 14)
 
-[node name="AttackCooldown" type="Timer" parent="." index="5"]
-wait_time = 2.0
-autostart = true
+[node name="Health" parent="." index="4"]
+offset_left = -91.0
+offset_top = -50.0
+offset_right = 92.0
+offset_bottom = -44.0
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

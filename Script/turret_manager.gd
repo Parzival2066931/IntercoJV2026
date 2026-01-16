@@ -51,3 +51,8 @@ func get_first_empty_turret() -> int:
 		if turrets[i] == null:
 			return i
 	return -1
+	
+func get_turrets() -> Array[Node]:
+	return get_children()
+
+#ajouter modify_turrets(turret: Turret, index: int):

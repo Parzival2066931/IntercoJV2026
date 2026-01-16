@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="GameManagerStats" load_steps=4 format=3 uid="uid://vmck0rc67x0k"]
+[gd_resource type="Resource" script_class="GameManagerStats" load_steps=5 format=3 uid="uid://vmck0rc67x0k"]
 
 [ext_resource type="PackedScene" uid="uid://dve8qaanc0grf" path="res://Scenes/EnemyScenes/kamikaze.tscn" id="1_051p0"]
 [ext_resource type="Script" uid="uid://bjm718qy5us1c" path="res://Script/game_manager_stats.gd" id="1_w3hpw"]
 [ext_resource type="PackedScene" uid="uid://da1tdl7nqi5bb" path="res://Scenes/EnemyScenes/lazer_enemy.tscn" id="2_sloue"]
+[ext_resource type="PackedScene" uid="uid://cj6gwabgdnlck" path="res://Scenes/alien_egg.tscn" id="3_thuas"]
 
 [resource]
 script = ExtResource("1_w3hpw")
 list_enemies = Array[PackedScene]([ExtResource("2_sloue"), ExtResource("1_051p0")])
+miniboss = ExtResource("3_thuas")
+current_round = 5
 player_path = NodePath("../Player")
 hud_path = NodePath("../HUD")
 metadata/_custom_type_script = "uid://bjm718qy5us1c"

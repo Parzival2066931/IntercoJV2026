@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhi81cf5cb60j"]
+[gd_scene load_steps=11 format=3 uid="uid://dhi81cf5cb60j"]
 
 [ext_resource type="PackedScene" uid="uid://bcsuflg3riw4e" path="res://Scenes/turret_manager.tscn" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://x6fsy78x3btb" path="res://Script/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://t033hjr5gfjc" path="res://Assets/Sprites/vaisseau_a_Mick.png" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://qqac0dwfbglh" path="res://Script/camera_2d.gd" id="2_x3wgy"]
 [ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://addons/trail_2d/trail_2d.gd" id="3_6t5aa"]
 [ext_resource type="Resource" uid="uid://bom1v1lv5rrpc" path="res://Resources/lazer_projectile.tres" id="4_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkybt"]
-radius = 60.0
+radius = 23.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3wgy"]
 radius = 60.133186
@@ -28,6 +29,7 @@ acceleration = 0.015
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+script = ExtResource("2_x3wgy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -72,3 +74,9 @@ round_precision = 32
 script = ExtResource("3_6t5aa")
 length = 20
 metadata/_custom_type_script = "uid://br67kd68yk2s5"
+
+[node name="TP_Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="TP_Timer" to="." method="_on_tp_timer_timeout"]

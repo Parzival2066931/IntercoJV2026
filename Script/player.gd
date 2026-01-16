@@ -11,6 +11,10 @@ var stats: PlayerStats
 @export var base_time := 2.0
 @export var acceleration := 0.1
 
+@onready var trail_2d: Line2D = $Trail2D
+
+
+
 var direction := Vector2()
 var hp: float
 var facing := "front"
@@ -48,7 +52,11 @@ func take_damage(damage: float):
 	is_attacked(damage)
 
 func is_attacked(damage: float):
-	stats.current_hp -= damage * (15.0 / (stats.armor + 15))
+	print(damage)
+	print("AÎE")
+	print(stats.current_hp)
+	stats.current_hp -= damage * (15.0 / (stats.armor + 15.0))
+	print(stats.current_hp)
 	hp_changed.emit(stats.current_hp, stats.max_hp)
 	if stats.current_hp <= 0:
 		player_died.emit()
@@ -65,7 +73,6 @@ func update_stats():
 	$PassiveHeal.wait_time = base_time * (pow(0.95, min(stats.hp_regen, 100)))
 	for weapon in get_weapons():
 		weapon.stats.damage = stats.get_total_damage(weapon.weapon_stats.damage)
-		weapon.stats.penetration = weapon.weapon_stats.penetration + stats.penetration
 		weapon.stats.attack_range = weapon.weapon_stats.attack_range + stats.attack_range
 		
 func get_weapons():
@@ -77,3 +84,7 @@ func setup():
 		stats.current_hp = stats.get_total_max_hp()
 	print("Player ready")
 	emit_signal("hp_changed", stats.current_hp, stats.max_hp)
+
+
+func _on_tp_timer_timeout() -> void:
+	trail_2d.visible = true
