@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Interco_JV_2026"
-run/main_scene="uid://dmilagllrkefp"
+config/name="Starship Crusader: Battle Of Arkadia"
+run/main_scene="uid://bwwncgwh7ngb5"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://Assets/Sprites/icon.svg"
+boot_splash/image="uid://dqa31igfbhx0l"
+config/icon="uid://b30lqvwrgpem4"
+
+[autoload]
+
+game_manager="*res://Scenes/game_manager.tscn"
 
 [display]
 
@@ -70,7 +75,7 @@ right={
 2d_physics/layer_3="Enemy_Hurtbox"
 2d_physics/layer_4="Player_Hitbox"
 2d_physics/layer_5="Enemy_Hitbox"
-mouse_cursor/custom_image="uid://bn4rx1a75fwp5"
+mouse_cursor/custom_image="res://Assets/Sprites/souris.png"
 
 [rendering]
 

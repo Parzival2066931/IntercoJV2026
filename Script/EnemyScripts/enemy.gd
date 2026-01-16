@@ -12,6 +12,8 @@ var player : Player
 @export var base_max_hp := 30.0
 
 @onready var health_bar := $Health
+@onready var pivot: Node2D = $Pivot
+
 
 var speed: float
 var hp : float
@@ -51,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		move_dir = Vector2.ZERO
 		
-	look_at(player.global_position)
+	pivot.look_at(player.global_position)
 
 	velocity = move_dir * speed
 	move_and_slide()

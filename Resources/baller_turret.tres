@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TurretStats" load_steps=6 format=3 uid="uid://bllmqesbwqg8"]
 
 [ext_resource type="PackedScene" uid="uid://c2d53ss2f34jp" path="res://Scenes/base_bullet.tscn" id="1_leudk"]
-[ext_resource type="Script" uid="uid://blphcdax0yq2x" path="res://Script/turret_stats.gd" id="1_nm1yc"]
+[ext_resource type="Script" path="res://Script/turret_stats.gd" id="1_nm1yc"]
 [ext_resource type="Texture2D" uid="uid://bib8f5v3rsg6v" path="res://Assets/Sprites/boules.png" id="2_654hr"]
 [ext_resource type="AudioStream" uid="uid://hejxij2nw0h5" path="res://Assets/Music/energy_blast.wav" id="2_m2mdo"]
 [ext_resource type="Texture2D" uid="uid://bqcvxym20d6n3" path="res://Assets/Sprites/canon_liam_calisss.png" id="4_4bjom"]

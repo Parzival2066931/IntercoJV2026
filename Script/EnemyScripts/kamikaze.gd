@@ -7,6 +7,7 @@ class_name Kamikaze
 @onready var die_animation: AnimatedSprite2D = $DieAnimation
 @onready var explosion_range: Area2D = $ExplosionRange
 @onready var explosion_shape: CollisionShape2D = $ExplosionRange/ExplosionShape
+@onready var ship: Sprite2D = $Pivot/Sprite2D
 
 
 var hit_targets := {}
@@ -31,9 +32,10 @@ func _physics_process(delta: float) -> void:
 	var dir_to_player = to_player.normalized()
 
 		
-	look_at(player.global_position)
 	
 	if not is_dying:
+		pivot.look_at(player.global_position)
+		
 		velocity = dir_to_player * speed
 		move_and_slide()
 
@@ -59,15 +61,16 @@ func disable_combat():
 func _on_die_animation_animation_finished() -> void:
 	if not is_dying:
 		return
-	if die_animation.animation != "Explosion":
+	if die_animation.animation != "Explosion 2":
 		return
 	die_animation.animation_finished.disconnect(_on_die_animation_animation_finished)
 	die()
 
 func explosion():
 	health_bar.hide()
+	ship.visible = false
 	die_animation.visible = true
-	die_animation.play("Explosion")
+	die_animation.play("Explosion 2")
 	
 	hit_targets.clear()
 	

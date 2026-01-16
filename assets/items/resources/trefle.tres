@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://c4yhrekxer2ho"]
+
+[ext_resource type="Texture2D" uid="uid://dnf6e1jpijwwv" path="res://Assets/Sprites/trefle.png" id="1_bd48i"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_c7dum"]
+
+[resource]
+script = ExtResource("2_c7dum")
+damage = -5
+speed = 5.0
+attack_range = -20
+luck = 50
+icon = ExtResource("1_bd48i")

@@ -62,6 +62,7 @@ buffer_length = 0.1
 
 [node name="LaserBeam2D" type="RayCast2D"]
 target_position = Vector2(1400, 0)
+collision_mask = 4
 script = ExtResource("1")
 start_distance = 0.0
 growth_time = 0.5

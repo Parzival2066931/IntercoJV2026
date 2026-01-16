@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://4g1rv2nnt5th"]
+
+[ext_resource type="PackedScene" uid="uid://dgyonusdy4y23" path="res://Scenes/Shop.tscn" id="1_pb756"]
+[ext_resource type="PackedScene" uid="uid://be0f35d4q7al3" path="res://Scenes/game_manager.tscn" id="2_q0bc7"]
+[ext_resource type="PackedScene" uid="uid://dhi81cf5cb60j" path="res://Scenes/player.tscn" id="3_e0br0"]
+[ext_resource type="Resource" uid="uid://0u7smregwaty" path="res://Resources/player_stats.tres" id="4_6gis3"]
+[ext_resource type="Script" uid="uid://jwnmvl6qq5a3" path="res://Script/player.gd" id="5_6gis3"]
+
+[node name="MondeAlex" type="Node2D"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Shop" parent="HUD" instance=ExtResource("1_pb756")]
+gm_path = NodePath("../../GameManager")
+
+[node name="Player" parent="." instance=ExtResource("3_e0br0")]
+script = ExtResource("5_6gis3")
+base_stats = ExtResource("4_6gis3")
+
+[node name="GameManager" parent="." instance=ExtResource("2_q0bc7")]
+
+[editable path="HUD/Shop"]
+[editable path="HUD/Shop/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi"]

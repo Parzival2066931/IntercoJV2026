@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://b8r06xgrpq4dj"]
+
+[ext_resource type="Texture2D" uid="uid://buba4ptxhhsp0" path="res://Assets/Sprites/carburant_ROUGE.png" id="1_l1yqt"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_2mc4y"]
+
+[resource]
+script = ExtResource("2_2mc4y")
+hp = 50
+speed = 20.0
+luck = -3
+speed_percent = 0.10000000000000009
+attack_speed_percent = 0.10000000000000009
+icon = ExtResource("1_l1yqt")
+rarity = 4

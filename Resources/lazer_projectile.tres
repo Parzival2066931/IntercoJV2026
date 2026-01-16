@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TurretStats" load_steps=5 format=3 uid="uid://bom1v1lv5rrpc"]
 
-[ext_resource type="Script" uid="uid://blphcdax0yq2x" path="res://Script/turret_stats.gd" id="1_0tyke"]
+[ext_resource type="Script" path="res://Script/turret_stats.gd" id="1_0tyke"]
 [ext_resource type="PackedScene" uid="uid://c2d53ss2f34jp" path="res://Scenes/base_bullet.tscn" id="1_8y86c"]
 [ext_resource type="AudioStream" uid="uid://cuehwefemivdt" path="res://Assets/Music/blaster.wav" id="1_uflin"]
 [ext_resource type="Texture2D" uid="uid://c4102rfh78y3h" path="res://Assets/Sprites/canon_basic.png" id="3_uflin"]

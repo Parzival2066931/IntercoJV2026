@@ -63,7 +63,7 @@ func attack(enemy):
 	else:
 		if shooting_style == TurretStats.Shooting_style.LAZER:
 			lazer.set_is_casting(false)
-		$Pivot.global_rotation = 0
+		#$Pivot.global_rotation = 0
 			
 	#if abs(global_rotation) > PI/2:
 		#$Pivot.scale.y = -1
