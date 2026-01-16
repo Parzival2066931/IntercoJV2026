@@ -7,9 +7,10 @@
 resource_local_to_scene = true
 script = ExtResource("2_5vtnn")
 hp = 20
-hp_regen = 3
-hp_percent = 0.020000000000000018
+speed = 10.0
+hp_percent = 0.02000000000000001
+attack_speed_percent = 0.040000000000000036
 name = "Carburant"
-price = 10
+price = 5
 icon = ExtResource("1_fop8j")
 rarity = 5

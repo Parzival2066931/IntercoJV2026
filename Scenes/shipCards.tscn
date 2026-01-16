@@ -73,11 +73,13 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Description" type="Label" parent="MarginContainer/Item/ItemBody"]
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "a ajouter"
 label_settings = SubResource("LabelSettings_ok6gm")
+autowrap_mode = 2
 
 [node name="ItemFoot" type="HBoxContainer" parent="MarginContainer/Item"]
 z_index = 2

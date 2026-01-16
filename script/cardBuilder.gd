@@ -44,6 +44,7 @@ func display_item(temp_item: BaseItem, exponent : int):
 	name_label.text = item.name
 	var c: Color = rarity_color[exponent]
 	$TextureRect.modulate = c
+	current_item.modulate = rarity_color[exponent]
 	#name_label.add_theme_color_override("font_color", c)
 #
 	#var sb := get_theme_stylebox("panel").duplicate() as StyleBoxFlat

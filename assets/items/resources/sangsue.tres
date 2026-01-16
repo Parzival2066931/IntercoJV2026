@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://dlmbwu4o84ujy"]
+
+[ext_resource type="Texture2D" uid="uid://lvvi823o18tu" path="res://Assets/Sprites/sansue_de_lespace.png" id="1_at8qi"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_x3k7j"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_x3k7j")
+hp = 25
+hp_regen = 5
+armor = -5
+hp_percent = 0.06000000000000005
+name = "Sangsue"
+price = 10
+icon = ExtResource("1_at8qi")
+rarity = 5

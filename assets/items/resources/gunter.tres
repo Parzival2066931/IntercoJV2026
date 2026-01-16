@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://bo3xc8vh5i57l"]
+
+[ext_resource type="Texture2D" uid="uid://b14pxq1s63a5y" path="res://Assets/Sprites/GUNTER.png" id="1_glvbg"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_pjhmu"]
+
+[resource]
+script = ExtResource("2_pjhmu")
+hp = 20
+armor = -3
+luck = 10
+name = "Pingouin"
+price = 8
+icon = ExtResource("1_glvbg")
+rarity = 1

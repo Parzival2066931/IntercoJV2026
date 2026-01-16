@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://chkn6tygso62s"]
+
+[ext_resource type="Texture2D" uid="uid://dip1estg4e50x" path="res://Assets/Sprites/aimant.png" id="1_yrsof"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_8m7x0"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_8m7x0")
+speed_percent = 0.040000000000000036
+attack_speed_percent = 0.040000000000000036
+name = "Aimant"
+price = 10
+icon = ExtResource("1_yrsof")
+rarity = 5

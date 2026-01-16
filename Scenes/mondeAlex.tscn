@@ -8,9 +8,9 @@
 
 [node name="MondeAlex" type="Node2D"]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Shop" parent="UI" instance=ExtResource("1_pb756")]
+[node name="Shop" parent="HUD" instance=ExtResource("1_pb756")]
 gm_path = NodePath("../../GameManager")
 
 [node name="Player" parent="." instance=ExtResource("3_e0br0")]
@@ -19,5 +19,5 @@ base_stats = ExtResource("4_6gis3")
 
 [node name="GameManager" parent="." instance=ExtResource("2_q0bc7")]
 
-[editable path="UI/Shop"]
-[editable path="UI/Shop/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi"]
+[editable path="HUD/Shop"]
+[editable path="HUD/Shop/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi"]

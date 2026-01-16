@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpecialItem" load_steps=3 format=3 uid="uid://b8aqh2iiswpcw"]
+
+[ext_resource type="Texture2D" uid="uid://0mroxyfgtrsj" path="res://Assets/Sprites/cosmic_card.png" id="1_kecux"]
+[ext_resource type="Script" uid="uid://bff48u3wgk8k8" path="res://Assets/items/scripts/SpecialItem.gd" id="2_d1ovp"]
+
+[resource]
+script = ExtResource("2_d1ovp")
+trigger_type = 1
+name = "Carte Cosmique"
+icon = ExtResource("1_kecux")
+rarity = 3
+description = "Gagne 20% de ton argent  à chaque début de vague "

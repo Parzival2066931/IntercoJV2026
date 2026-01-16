@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://bdcw2acnstl1y"]
+
+[ext_resource type="Texture2D" uid="uid://dj20gcov76gni" path="res://Assets/Sprites/YodaTheRealJedi.png" id="1_xpkx6"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_n8nyy"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_n8nyy")
+hp = 20
+hp_regen = 3
+hp_percent = 0.02000000000000001
+name = "Alien Mort"
+price = 10
+icon = ExtResource("1_xpkx6")
+rarity = 5
