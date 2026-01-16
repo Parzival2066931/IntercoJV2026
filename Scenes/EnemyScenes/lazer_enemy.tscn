@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://da1tdl7nqi5bb"]
+
+[ext_resource type="PackedScene" uid="uid://cx68ypgcfncjn" path="res://Scenes/EnemyScenes/enemy.tscn" id="1_8iusy"]
+[ext_resource type="Script" uid="uid://cc40xru8i4wop" path="res://Script/lazer_enemy.gd" id="2_f008i"]
+[ext_resource type="Texture2D" uid="uid://b5vj6ok755hvo" path="res://Assets/Sprites/ennemie_base.png" id="3_bd7ig"]
+[ext_resource type="Script" uid="uid://chf61mg3g7pjn" path="res://Script/canons.gd" id="4_u8mej"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8iusy"]
+radius = 24.083189
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f008i"]
+radius = 24.186773
+
+[node name="LazerEnemy" instance=ExtResource("1_8iusy")]
+script = ExtResource("2_f008i")
+min_dist = 300.0
+max_dist = 400.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_8iusy")
+
+[node name="HurtboxShape" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_f008i")
+
+[node name="AttackCooldown" type="Timer" parent="." index="2"]
+wait_time = 2.0
+autostart = true
+
+[node name="Sprite2D" parent="Pivot" index="0"]
+texture = ExtResource("3_bd7ig")
+
+[node name="Canons" type="Node2D" parent="Pivot" index="1"]
+unique_name_in_owner = true
+script = ExtResource("4_u8mej")
+range = 500.0
+speed = 300.0
+damage = 30.0
+
+[node name="LeftCanon" type="Marker2D" parent="Pivot/Canons" index="0"]
+position = Vector2(19, -14)
+
+[node name="RightCanon" type="Marker2D" parent="Pivot/Canons" index="1"]
+position = Vector2(19, 14)
+
+[node name="Health" parent="." index="4"]
+offset_left = -91.0
+offset_top = -50.0
+offset_right = 92.0
+offset_bottom = -44.0
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

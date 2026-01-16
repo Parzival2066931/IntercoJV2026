@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bt3vp6644mvqy"]
+
+[ext_resource type="Script" uid="uid://b3vpvvbin75re" path="res://Script/star.gd" id="1_3vu41"]
+[ext_resource type="Texture2D" uid="uid://cj8tvf24qi013" path="res://Assets/Sprites/Étoile_piece.png" id="1_d0spr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vu41"]
+radius = 36.221542
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vu41"]
+atlas = ExtResource("1_d0spr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwpdb"]
+atlas = ExtResource("1_d0spr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a88l"]
+atlas = ExtResource("1_d0spr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgp3r"]
+atlas = ExtResource("1_d0spr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6c6wk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vu41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwpdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a88l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgp3r")
+}],
+"loop": true,
+"name": &"star",
+"speed": 4.0
+}]
+
+[node name="Star" type="Area2D" groups=["loots"]]
+collision_mask = 2
+script = ExtResource("1_3vu41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3vu41")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.5764706, 0.7372549, 0.9490196, 1)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6c6wk")
+animation = &"star"
+frame_progress = 0.19805248
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

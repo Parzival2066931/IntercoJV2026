@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://blucnhdiq6dqh"]
+[gd_scene load_steps=5 format=3 uid="uid://b4d2m3fbqlalt"]
 
-[ext_resource type="Script" path="res://Script/turret.gd" id="1_fcprl"]
-[ext_resource type="Texture2D" path="res://laser_2d/glowing_circle.png" id="2_6spbj"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/canon_laser1.png" id="2_hskch"]
+[ext_resource type="Script" uid="uid://bxeub3vltl2sk" path="res://Script/turret.gd" id="1_fcprl"]
+[ext_resource type="Texture2D" uid="uid://t105tdvgunrx" path="res://laser_2d/glowing_circle.png" id="2_6spbj"]
+[ext_resource type="Texture2D" uid="uid://k0mvlclt6oke" path="res://Assets/Sprites/canon_laser1.png" id="2_hskch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hskch"]
 
 [node name="Turret" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_fcprl")
 
 [node name="Base" type="Sprite2D" parent="."]

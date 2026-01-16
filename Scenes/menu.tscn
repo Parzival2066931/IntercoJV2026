@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://tvhv5g81g72q"]
+
+[ext_resource type="Texture2D" uid="uid://dvxbxj7oux3uo" path="res://Assets/Sprites/fond_fond.png" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://b08knpx4n678d" path="res://Script/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://b30lqvwrgpem4" path="res://Assets/Sprites/title.png" id="3_cayip"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhh6f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1rerr")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xhh6f")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_cayip")
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Jouer"
+autowrap_mode = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Paramètres"
+
+[node name="Leave" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quitter"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Leave" to="." method="_on_leave_pressed"]

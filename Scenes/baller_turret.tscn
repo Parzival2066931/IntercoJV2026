@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://i1yd7vl8umte"]
+[gd_scene load_steps=14 format=3 uid="uid://nxywrvlnttvw"]
 
-[ext_resource type="PackedScene" uid="uid://blucnhdiq6dqh" path="res://Scenes/turret.tscn" id="1_dahhi"]
-[ext_resource type="Script" path="res://Script/baller_turret.gd" id="2_nktnq"]
-[ext_resource type="Resource" path="res://Resources/baller_turret.tres" id="3_5vmga"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/canon_liam_calisss.png" id="3_ufgpf"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/canon_boulelaser.png" id="4_5vmga"]
+[ext_resource type="PackedScene" uid="uid://b4d2m3fbqlalt" path="res://Scenes/turret.tscn" id="1_dahhi"]
+[ext_resource type="Script" uid="uid://cccvnnqqpck1j" path="res://Script/baller_turret.gd" id="2_nktnq"]
+[ext_resource type="Resource" uid="uid://bllmqesbwqg8" path="res://Resources/baller_turret.tres" id="3_5vmga"]
+[ext_resource type="Texture2D" uid="uid://bqcvxym20d6n3" path="res://Assets/Sprites/canon_liam_calisss.png" id="3_ufgpf"]
+[ext_resource type="Texture2D" uid="uid://jbvcw7je3vbf" path="res://Assets/Sprites/canon_boulelaser.png" id="4_5vmga"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_miue8"]
 atlas = ExtResource("4_5vmga")

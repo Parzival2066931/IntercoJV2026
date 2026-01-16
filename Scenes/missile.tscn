@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt10nhre2s6j4"]
+[gd_scene load_steps=4 format=3 uid="uid://itlqnntoyxr3"]
 
-[ext_resource type="PackedScene" uid="uid://jh5mbwdun3ne" path="res://Scenes/base_bullet.tscn" id="1_u28tq"]
-[ext_resource type="Script" path="res://Script/missile.gd" id="2_bkb3y"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/missile.png" id="3_bkb3y"]
+[ext_resource type="PackedScene" uid="uid://c2d53ss2f34jp" path="res://Scenes/base_bullet.tscn" id="1_u28tq"]
+[ext_resource type="Script" uid="uid://x622iqsyhv4r" path="res://Script/missile.gd" id="2_bkb3y"]
+[ext_resource type="Texture2D" uid="uid://03vcwxf16l5" path="res://Assets/Sprites/missile.png" id="3_bkb3y"]
 
 [node name="Missile" instance=ExtResource("1_u28tq")]
 script = ExtResource("2_bkb3y")
