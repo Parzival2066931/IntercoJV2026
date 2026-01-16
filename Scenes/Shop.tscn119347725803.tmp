@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgyonusdy4y23"]
+[gd_scene load_steps=13 format=3 uid="uid://dgyonusdy4y23"]
 
-[ext_resource type="Script" uid="uid://cfl1har202oyc" path="res://Script/shopManager.gd" id="1_ccd4q"]
+[ext_resource type="Script" path="res://script/shopManager.gd" id="1_i4qx4"]
 [ext_resource type="PackedScene" uid="uid://bkt0plx36ewla" path="res://Scenes/shipCards.tscn" id="1_kjfcx"]
 [ext_resource type="FontFile" uid="uid://dfilhwpycnn0t" path="res://Assets/Fonts/advanced_pixel-7.ttf" id="2_ckylj"]
 [ext_resource type="PackedScene" uid="uid://dljhh3hdatrq8" path="res://Scenes/starsUi.tscn" id="2_e5ji4"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://vs8cwlal51w1" path="res://Scenes/ItemSlot.tscn" id="4_wndna"]
 [ext_resource type="Script" path="res://Script/grid_container.gd" id="5_ckylj"]
 [ext_resource type="Script" uid="uid://bdducbhfi2u8a" path="res://Script/shop_item_card.gd" id="5_ct2yw"]
-[ext_resource type="Script" uid="uid://bn180n8sg7h0l" path="res://Script/stats_panel.gd" id="10_ccd4q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wndna"]
 bg_color = Color(0.6, 0.6, 0.6, 0.23921569)
@@ -29,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ccd4q")
+script = ExtResource("1_i4qx4")
 rounds_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/NextRound")
 cash_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi/Amount")
 reroll_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/Reroll")
@@ -155,7 +154,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 264)
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("10_ccd4q")
 
 [node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide"]
 layout_mode = 2

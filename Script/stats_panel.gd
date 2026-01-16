@@ -1,13 +1,10 @@
 extends Node
 class_name StatsPanel
 
-# Labels pour les clés et valeurs
 @onready var stats_key: Label = $MarginContainer/VBoxContainer/Body/StatsContainer/KeyContainer/StatsKey
 @onready var stats_value: Label = $MarginContainer/VBoxContainer/Body/StatsContainer/StatsValue/StatsValue
 
-
 var player: Player
-
 
 func bind_player(p: Player) -> void:
 	player = p

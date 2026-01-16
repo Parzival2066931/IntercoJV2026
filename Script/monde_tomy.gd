@@ -1,14 +1,12 @@
 extends Node2D
 class_name Monde
 
-
-
 @onready var game_manager: GameManager = $GameManager
 
 @onready var hud: Hud = $HUD
 @onready var dimmer := $HUD/Dimmer
 @onready var hud_content := $HUD/RoundsControl
-#@onready var shop := $HUD/ShopOverlay
+@onready var shop := $HUD/Shop
 @onready var game_over := $HUD/GameOver
 @onready var menu := $HUD/Menu
 
@@ -26,7 +24,7 @@ func _process(delta: float) -> void:
 	
 func _on_state_changed(state: GameManager.GameState) -> void:
 	dimmer.visible = false
-	#shop.visible = false
+	shop.visible = false
 	game_over.visible = false
 	menu.visible = false
 	
@@ -38,9 +36,9 @@ func _on_state_changed(state: GameManager.GameState) -> void:
 
 	match state:
 		GameManager.GameState.SHOP:
-			#shop.setup()
+			shop.setup()
 			dimmer.visible = true
-			#shop.visible = true
+			shop.visible = true
 		GameManager.GameState.GAME_OVER:
 			dimmer.visible = true
 			game_over.visible = true

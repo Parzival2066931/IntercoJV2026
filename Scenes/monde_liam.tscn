@@ -46,15 +46,16 @@ animations = [{
 [node name="MondeLiam" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(97, 73)
+position = Vector2(97, 80)
 sprite_frames = SubResource("SpriteFrames_vrvms")
-frame_progress = 0.8857446
+frame_progress = 0.8581154
 
 [node name="Enemy" parent="." instance=ExtResource("1_amci5")]
 position = Vector2(139, 202)
 
 [node name="BallerTurret" parent="." instance=ExtResource("7_pl01f")]
 position = Vector2(479, 108)
+scale = Vector2(1, 1)
 
 [node name="Turret2" parent="." instance=ExtResource("2_t5ura")]
 position = Vector2(536, 152)
