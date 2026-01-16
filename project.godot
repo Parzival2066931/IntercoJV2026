@@ -14,7 +14,7 @@ config/name="Starship Crusader: Battle Of Arkadia"
 run/main_scene="uid://bwwncgwh7ngb5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/image="uid://dqa31igfbhx0l"
-config/icon="uid://b30lqvwrgpem4"
+config/icon="uid://dqa31igfbhx0l"
 
 [autoload]
 
