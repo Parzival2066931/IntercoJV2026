@@ -84,9 +84,9 @@ func adjust_item(item : BaseItem, temp_multiplier : float):
 			item.attack_speed_percent *= temp_multiplier
 		
 func _on_buy_pressed():
-	#if  game_manager.amount_of_star < current_item.price:
-		#print("Pas assez de cash")
-		#return
+	if  game_manager.amount_of_star < current_item.price:
+		print("Pas assez de cash")
+		return
 		
 	game_manager.on_cash_changed(-current_item.price)
 	buy_button.text = "Vendu"

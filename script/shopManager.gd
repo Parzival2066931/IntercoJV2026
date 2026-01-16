@@ -24,7 +24,7 @@ extends Node
 var player : Player
 
 var attemps: int
-var base_attemps := 100
+var base_attemps := 3
 var items = {
 	BaseItem.Rarity.COMMON: [],
 	BaseItem.Rarity.UNCOMMON: [],
