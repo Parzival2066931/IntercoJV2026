@@ -465,7 +465,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Explosion 2",
-"speed": 10.0
+"speed": 18.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mumnr"]
@@ -482,8 +482,12 @@ colors = PackedColorArray(0.9843137, 0.007843138, 0.03137255, 1, 0, 0, 0, 0)
 
 [node name="Kamikaze" instance=ExtResource("1_nrulw")]
 script = ExtResource("3_shlsi")
+min_dist = 180.0
+max_dist = 260.0
+loot = null
 base_speed = 300.0
 base_damage = 20.0
+base_max_hp = 30.0
 
 [node name="DieAnimation" type="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(4, 4)

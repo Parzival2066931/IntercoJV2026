@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Starship Crusader: Battle Of Arkadia"
-run/main_scene="uid://bjbyy581ns2ch"
+run/main_scene="uid://bwwncgwh7ngb5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/image="uid://dqa31igfbhx0l"
-config/icon="uid://b30lqvwrgpem4"
+config/icon="uid://dqa31igfbhx0l"
 
 [autoload]
 
@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/gdquest_colorpicker_presets/plugin.cfg")
 
 loots=""
 enemies=""
+meteors=""
 
 [input]
 

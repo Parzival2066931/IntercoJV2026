@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://by7f7g68lke0e"]
 
-[ext_resource type="Script" uid="uid://doxovvrubgmmv" path="res://Script/statsPanel.gd" id="1_7vdni"]
+[ext_resource type="Script" path="res://Script/stats_panel.gd" id="1_5n8mb"]
 [ext_resource type="FontFile" uid="uid://dfilhwpycnn0t" path="res://Assets/Fonts/advanced_pixel-7.ttf" id="2_5n8mb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vdni"]
@@ -26,8 +26,7 @@ offset_bottom = 0.07998657
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7vdni")
-script = ExtResource("1_7vdni")
-player_path = null
+script = ExtResource("1_5n8mb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

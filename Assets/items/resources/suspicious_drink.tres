@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SuspiciousDrink" load_steps=3 format=3 uid="uid://bg1t7hgsu3ide"]
+
+[ext_resource type="Texture2D" uid="uid://dx7pdywcd1pe2" path="res://Assets/Sprites/potion_merveille.png" id="1_0x71g"]
+[ext_resource type="Script" uid="uid://ihew2m0yi4a2" path="res://Assets/items/scripts/suspicious_drink.gd" id="1_po8om"]
+
+[resource]
+script = ExtResource("1_po8om")
+name = "Potion suspecte"
+price = 1
+icon = ExtResource("1_0x71g")
+description = "Mystère mystère"
+metadata/_custom_type_script = "uid://ihew2m0yi4a2"

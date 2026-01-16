@@ -1,7 +1,9 @@
 extends BaseBullet
+class_name Missile
 
 func _process(delta: float) -> void:
-	look_at(get_closest_enemy().global_position)
+	if get_closest_enemy():
+		look_at(get_closest_enemy().global_position)
 
 func get_closest_enemy():
 	var enemies = get_tree().get_nodes_in_group("enemies")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://be0f35d4q7al3"]
 
 [ext_resource type="Script" uid="uid://b2raeff3gjpbw" path="res://Script/game_manager.gd" id="1_e5fcp"]
-[ext_resource type="PackedScene" path="res://Scenes/spawner.tscn" id="2_sq00h"]
+[ext_resource type="PackedScene" uid="uid://ddxdw3a12h24f" path="res://Scenes/spawner.tscn" id="2_sq00h"]
 [ext_resource type="PackedScene" uid="uid://bjk5gf10cws0n" path="res://Scenes/meteor.tscn" id="3_sq00h"]
-[ext_resource type="Script" uid="uid://mhjhxdr2vayu" path="res://Script/music_player.gd" id="4_yqty0"]
+[ext_resource type="Script" path="res://Script/music_player.gd" id="4_yqty0"]
 [ext_resource type="AudioStream" uid="uid://dx5kd6xxjpajr" path="res://Assets/Music/MainTheme.wav" id="5_71d4j"]
 [ext_resource type="AudioStream" uid="uid://bf45jib3fnb22" path="res://Assets/Music/ShopTheme.wav" id="6_efn8y"]
 
@@ -20,12 +20,14 @@ script = ExtResource("1_e5fcp")
 meteor_scene = ExtResource("3_sq00h")
 
 [node name="MusicPlayer" type="Node2D" parent="."]
+process_mode = 3
 script = ExtResource("4_yqty0")
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource("5_71d4j")
 
 [node name="ShopTheme" type="AudioStreamPlayer" parent="MusicPlayer"]
+process_mode = 3
 stream = ExtResource("6_efn8y")
 
 [connection signal="timeout" from="Round_Timer" to="." method="_on_round_timer_timeout"]

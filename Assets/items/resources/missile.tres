@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TurretItem" load_steps=4 format=3 uid="uid://cgc8cubta6vh0"]
+
+[ext_resource type="Texture2D" uid="uid://cxrr518dkml0a" path="res://Assets/Sprites/canon_missile.png" id="1_1ubd1"]
+[ext_resource type="Script" uid="uid://cfpprxvyqlgtp" path="res://Assets/items/scripts/TurretItem.gd" id="1_jsc8f"]
+[ext_resource type="Resource" path="res://Resources/missile_turret.tres" id="3_d5af0"]
+
+[resource]
+script = ExtResource("1_jsc8f")
+turret_stats = ExtResource("3_d5af0")
+name = "Lance missiles"
+price = 10
+icon = ExtResource("1_1ubd1")
+rarity = 5
+description = "Tire des missiles à têtes chercheuses"
+metadata/_custom_type_script = "uid://cfpprxvyqlgtp"

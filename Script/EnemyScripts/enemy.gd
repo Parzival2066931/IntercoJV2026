@@ -28,10 +28,11 @@ signal object_in_area
 
 func _ready() -> void:
 	player = get_tree().current_scene.get_node("Player")
-	#loot = preload("res://scenes/coin2.tscn")
+	loot = preload("res://Scenes/star.tscn")
 	max_hp = base_max_hp
 	damage = base_damage
 	hp = max_hp
+	
 	object_in_area.connect(on_object_detected_in_area)
 
 @warning_ignore("unused_parameter")

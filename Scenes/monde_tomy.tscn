@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bjbyy581ns2ch"]
+[gd_scene load_steps=12 format=4 uid="uid://bwwncgwh7ngb5"]
 
 [ext_resource type="Script" uid="uid://dk6qtabiijebj" path="res://Script/monde_tomy.gd" id="1_2mprf"]
 [ext_resource type="Texture2D" uid="uid://dnr1c8wruwgmc" path="res://Assets/Sprites/mrd7stj7vtv71.png" id="1_6wn7q"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvxbxj7oux3uo" path="res://Assets/Sprites/fond_fond.png" id="2_v5iw4"]
 [ext_resource type="PackedScene" uid="uid://b3dadwn4ak33r" path="res://Scenes/map_teleporter.tscn" id="3_scwm0"]
 [ext_resource type="Resource" uid="uid://0u7smregwaty" path="res://Resources/player_stats.tres" id="4_opnbj"]
-[ext_resource type="PackedScene" uid="uid://0qg5gn2j2uwm" path="res://Scenes/hud.tscn" id="4_v5iw4"]
+[ext_resource type="PackedScene" uid="uid://218cs6vd2jjp" path="res://Scenes/hud.tscn" id="4_v5iw4"]
 [ext_resource type="PackedScene" uid="uid://be0f35d4q7al3" path="res://Scenes/game_manager.tscn" id="5_opnbj"]
 [ext_resource type="Resource" uid="uid://vmck0rc67x0k" path="res://Resources/game_settings.tres" id="6_05b4r"]
 
@@ -1009,14 +1009,22 @@ limit_bottom = 2004
 
 [node name="HUD" parent="." instance=ExtResource("4_v5iw4")]
 
+[node name="RoundsControl" parent="HUD" index="1"]
+visible = false
+
 [node name="GameOver" parent="HUD" index="2"]
+visible = false
 gm_path = NodePath("../../GameManager")
 
 [node name="Menu" parent="HUD" index="4"]
 gm_path = NodePath("../../GameManager")
 
 [node name="Shop" parent="HUD" index="5"]
+visible = false
 gm_path = NodePath("../../GameManager")
+
+[node name="Settings" parent="HUD" index="6"]
+visible = false
 
 [node name="GameManager" parent="." instance=ExtResource("5_opnbj")]
 settings = ExtResource("6_05b4r")
@@ -1032,4 +1040,5 @@ max_volume = -5
 [editable path="HUD"]
 [editable path="HUD/RoundsControl/TopLeft/VBoxContainer/Stars_label"]
 [editable path="HUD/Menu"]
+[editable path="HUD/Settings"]
 [editable path="GameManager"]

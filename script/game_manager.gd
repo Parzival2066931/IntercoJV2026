@@ -43,7 +43,7 @@ var time_left: float
 var zone_min := Vector2(-3000, -1875)
 var zone_max := Vector2(3000, 1870)
 
-#var owned_items: Array[BaseItem] = []
+var owned_items: Array[BaseItem] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -105,23 +105,37 @@ func set_state(new_state: GameState) -> void:
 	
 
 func reset_game():
-	stats = settings.duplicate()
-	list_enemies = stats.list_enemies
-	monster_egg = stats.miniboss
-	round_duration = stats.round_duration
-	base_spawn_interval = stats.base_spawn_interval
-	spawn_interval_decrease = stats.spawn_interval_decrease
-	current_round = stats.current_round
-	player_path = stats.player_path
-	hud_path = stats.hud_path
-	multiplier_per_round = stats.multiplier_per_round
-	player.setup()
-	#ajouter les player_stats quand ce sera fait
+	round_timer.stop()
+	spawn_timer.stop()
 	
+	owned_items.clear()
+	amount_of_star = 0
+	current_round = 1
+	multiplier_per_round = 1.0
+	time_left = 0.0
+	
+	hud.set_cash(amount_of_star)
+	hud.set_round(current_round)
+	hud.set_time_left(0)
+	
+	player.setup()
+	hud.set_hp(player.stats.current_hp, player.stats.max_hp)
+	
+	var turret_manager := player.get_node_or_null("TurretManager")
+	if turret_manager:
+		turret_manager.reset_to_starting()
+	owned_items = []
+		
+	#ajouter les player_stats quand ce sera fait
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		enemy.queue_free()
 	for loot in get_tree().get_nodes_in_group("loots"):
 		loot.queue_free()
+	for meteor in get_tree().get_nodes_in_group("meteors"):
+		meteor.queue_free()
+	for item in owned_items:
+		print(item)
+		owned_items.clear()
 		
 	decollage.hide()
 	
@@ -129,7 +143,7 @@ func reset_game():
 
 func start_round():
 	print("=== VAGUE", current_round, "===")
-	#$MusicPlayer.main_theme()
+	$MusicPlayer.main_theme()
 	wave_start.emit()
 	
 	hud.set_round(current_round)
@@ -163,14 +177,6 @@ func random_point_in_circle(center: Vector2, radius: float) -> Vector2:
 	var angle := randf() * TAU
 	var r := sqrt(randf()) * radius
 	return center + Vector2(cos(angle), sin(angle)) * r
-
-#func on_boss_stomp_spawn_request(center: Vector2, radius: float):
-	#var count_enemies = 4 + randi() % 2
-	#for i in range(count_enemies):
-		#var new_enemy = list_enemies.pick_random()
-		#var enemy = spawner.spawn(new_enemy, random_point_in_circle(center, radius))
-		#enemy.enemy_died.connect(on_enemy_died)
-		#enemy.set_difficulty(multiplier_per_round)
 
 func on_mini_boss_died(loots: Array[PackedScene], center: Vector2, radius: float):
 	for loot in loots:
@@ -227,17 +233,17 @@ func _on_spawn_timer_timeout() -> void:
 func on_player_hp_changed(hp: float, max_hp: float) -> void:
 	pass
 	hud.set_hp(hp, max_hp)
-	#var heal_label: PackedScene = preload("res://scenes/heal_label.tscn")
-	#$Spawner.spawn(heal_label, player.global_position + Vector2(0, -100))
 
 func end_round():
+	$MusicPlayer.shop_theme()
+	print("Je change de musique")
 	wave_end.emit()
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		enemy.queue_free()
+	for meteor in get_tree().get_nodes_in_group("meteors"):
+		meteor.queue_free()
 	
 	spawn_timer.stop()
 	
-	#$MusicPlayer.shop_theme()
-	#set_state(GameState.SHOP)
+	set_state(GameState.SHOP)
 	current_round += 1
-	start_round()

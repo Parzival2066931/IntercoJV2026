@@ -91,6 +91,7 @@ func load_all_items():
 						items[BaseItem.Rarity.RARE].append(res.duplicate())
 						items[BaseItem.Rarity.EPIC].append(res.duplicate())
 						items[BaseItem.Rarity.LEGENDARY].append(res.duplicate())
+						print(res.name)
 					_:
 						print("Erreur: ", res.rarity)
 						
@@ -103,8 +104,8 @@ func setup():
 	reroll_button.disabled = false
 	attemps = base_attemps
 	cash.text = str(game_manager.amount_of_star)
-	rounds.text = "Shop (Wave %d)" % game_manager.current_round
-	next_round.text = "Go (Wave %d)" % (game_manager.current_round + 1)
+	rounds.text = "Boutique (Vague %d)" % game_manager.current_round
+	next_round.text = "Continuer (Vague %d)" % (game_manager.current_round + 1)
 	display_items()
 	#stats_panel.updateStatsLabel(player)
 	
@@ -115,7 +116,7 @@ func display_items():
 		item.display_item(tab[0], tab[1])
 
 func get_item():
-	var roll = roll_rarity(0)
+	var roll = roll_rarity(item_cards[0].player.stats.luck)
 	return [items[roll].pick_random(), roll]
 
 func roll_rarity(luck: float) -> BaseItem.Rarity:

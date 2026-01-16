@@ -9,6 +9,6 @@ hp = 20
 armor = -3
 luck = 10
 name = "Pingouin"
-price = 8
+price = 6
 icon = ExtResource("1_glvbg")
 rarity = 1

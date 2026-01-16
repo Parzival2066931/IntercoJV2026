@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [node name="ShipLaunching" type="Area2D"]
-z_index = 6
+z_index = 4096
 script = ExtResource("1_6x1f0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

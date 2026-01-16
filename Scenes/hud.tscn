@@ -1,18 +1,17 @@
-[gd_scene load_steps=46 format=3 uid="uid://0qg5gn2j2uwm"]
+[gd_scene load_steps=18 format=3 uid="uid://218cs6vd2jjp"]
 
 [ext_resource type="Script" uid="uid://b1wuoykmwgh6o" path="res://Script/hud.gd" id="1_6fbih"]
-[ext_resource type="PackedScene" path="res://Scenes/stars_label.tscn" id="1_e0onf"]
-[ext_resource type="Script" path="res://Script/rounds_control.gd" id="2_5ep0j"]
+[ext_resource type="PackedScene" uid="uid://jtcut4im3ye3" path="res://Scenes/stars_label.tscn" id="1_e0onf"]
+[ext_resource type="Script" uid="uid://5knnlaemwes0" path="res://Script/rounds_control.gd" id="2_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://c80v30y6itp5d" path="res://Assets/Sprites/barredevie (1).png" id="2_8jye8"]
 [ext_resource type="Shader" uid="uid://bjj5na0j74b1h" path="res://Shader/player_health_bar.gdshader" id="2_43w4t"]
 [ext_resource type="FontFile" uid="uid://dfilhwpycnn0t" path="res://Assets/Fonts/advanced_pixel-7.ttf" id="2_fccik"]
 [ext_resource type="PackedScene" uid="uid://hnb225453dxw" path="res://Scenes/ship_launching.tscn" id="2_piegi"]
-[ext_resource type="Script" path="res://Script/player_health_bar.gd" id="3_43w4t"]
+[ext_resource type="Script" uid="uid://ba0pomeye548a" path="res://Script/player_health_bar.gd" id="3_43w4t"]
 [ext_resource type="Script" uid="uid://t486d2lo8c4r" path="res://Script/game_over.gd" id="3_bjfho"]
-[ext_resource type="PackedScene" path="res://Scenes/menu.tscn" id="5_t1xeu"]
-[ext_resource type="Texture2D" uid="uid://b30xbbt37ylvl" path="res://Assets/Sprites/fond_cinematique67.png" id="10_5ep0j"]
-[ext_resource type="Texture2D" uid="uid://bwrsnc5lnud2r" path="res://Assets/Sprites/fond_cinematique_finaliwish.png" id="11_4f5kr"]
-[ext_resource type="PackedScene" path="res://Scenes/Shop.tscn" id="13_i2avg"]
+[ext_resource type="PackedScene" uid="uid://tvhv5g81g72q" path="res://Scenes/menu.tscn" id="5_t1xeu"]
+[ext_resource type="PackedScene" uid="uid://dgyonusdy4y23" path="res://Scenes/Shop.tscn" id="13_i2avg"]
+[ext_resource type="PackedScene" uid="uid://bxvhjubqn1bvy" path="res://Scenes/settings.tscn" id="14_1a2va"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_piegi"]
 font = ExtResource("2_fccik")
@@ -26,6 +25,7 @@ shader_parameter/keep_full_tip = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_bjfho"]
 font = ExtResource("2_fccik")
+font_size = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fbih"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -33,196 +33,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_t1xeu"]
 font = ExtResource("2_fccik")
 font_size = 25
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rfqti"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 0, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g8i7c"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 360, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_23t3j"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 720, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ph6h"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 1080, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ti5v"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 1440, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1by5w"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 1800, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kmwmt"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 2160, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rc6uw"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 2520, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dldpb"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 2880, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d77ms"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 3240, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3p34a"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 3600, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_owyel"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 3960, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h63v2"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 4320, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6llh"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 4680, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ocger"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 5040, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i37ye"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 5400, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbv25"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 5760, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nakb8"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 6120, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pde1v"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 6480, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_747ic"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 6840, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0760"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 7200, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvy56"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 7560, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_48g0d"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 7920, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ygxe1"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 8280, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0idt7"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(5, 8640, 629, 357)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ki2a1"]
-atlas = ExtResource("10_5ep0j")
-region = Rect2(6, 9001, 629, 352)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4f5kr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rfqti")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g8i7c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_23t3j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ph6h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ti5v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1by5w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kmwmt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rc6uw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dldpb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d77ms")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3p34a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_owyel")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h63v2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l6llh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ocger")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i37ye")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbv25")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nakb8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pde1v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_747ic")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0760")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvy56")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_48g0d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ygxe1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0idt7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ki2a1")
-}],
-"loop": false,
-"name": &"Départ",
-"speed": 5.0
-}]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_6fbih")
@@ -237,7 +47,6 @@ grow_vertical = 2
 color = Color(0.2509804, 0.2509804, 0.2509804, 0.3882353)
 
 [node name="RoundsControl" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -307,7 +116,6 @@ layout_mode = 2
 text = "00:00"
 
 [node name="GameOver" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -360,38 +168,21 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Quitter"
 
-[node name="StartShip" type="Area2D" parent="."]
-
-[node name="Depart" type="AnimatedSprite2D" parent="StartShip"]
-position = Vector2(320.25003, 180.51227)
-scale = Vector2(1.0198728, 1.0254985)
-sprite_frames = SubResource("SpriteFrames_4f5kr")
-animation = &"Départ"
-frame = 25
-frame_progress = 1.0
-
-[node name="Decollage" type="Sprite2D" parent="StartShip"]
-visible = false
-position = Vector2(319.1525, 178.39824)
-scale = Vector2(1.02, 1.025)
-texture = ExtResource("11_4f5kr")
-region_enabled = true
-region_rect = Rect2(6.750183, 9352.341, 626.7803, 353.3203)
-
-[node name="Muzzle" type="Marker2D" parent="StartShip"]
-position = Vector2(177, 193)
-
 [node name="Menu" parent="." instance=ExtResource("5_t1xeu")]
-visible = false
+process_mode = 3
 offset_right = -2.0
 offset_bottom = -1.0
 
 [node name="Shop" parent="." instance=ExtResource("13_i2avg")]
 
+[node name="Settings" parent="." instance=ExtResource("14_1a2va")]
+process_mode = 3
+z_index = 1
+
 [connection signal="pressed" from="GameOver/Panel/VBox/RetryButton" to="GameOver" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/Panel/VBox/MenuButton" to="GameOver" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GameOver/Panel/VBox/QuitButton" to="GameOver" method="_on_quit_button_pressed"]
-[connection signal="animation_finished" from="StartShip/Depart" to="." method="_on_depart_animation_finished"]
 
 [editable path="RoundsControl/TopLeft/VBoxContainer/Stars_label"]
 [editable path="Menu"]
+[editable path="Settings"]

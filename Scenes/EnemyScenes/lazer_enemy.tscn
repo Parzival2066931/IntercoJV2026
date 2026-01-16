@@ -15,6 +15,9 @@ radius = 24.186773
 script = ExtResource("2_f008i")
 min_dist = 300.0
 max_dist = 400.0
+base_speed = 180.0
+base_damage = 1.0
+base_max_hp = 30.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_8iusy")

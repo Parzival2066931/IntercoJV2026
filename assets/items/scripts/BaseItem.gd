@@ -11,5 +11,5 @@ enum Rarity { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, ALL }
 @export var modulate : Color = "ffffff"
 
 
-func apply_effect(player: Node2D, game_manager: Node):
+func apply_effect(player: Node2D, game_manager: Node, rarity):
 	pass

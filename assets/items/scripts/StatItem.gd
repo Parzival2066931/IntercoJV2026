@@ -16,7 +16,7 @@ class_name StatItem
 @export_range(-1, 1, 0.01) var speed_percent: float = 0.0
 @export_range(-1, 1, 0.01) var attack_speed_percent: float = 0.0
 
-func apply_effect(player: Node2D, game_manager: Node):
+func apply_effect(player: Node2D, game_manager: Node, rarity):
 	var stats = player.stats
 	
 	stats.max_hp += hp

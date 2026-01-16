@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TurretItem" load_steps=4 format=3 uid="uid://dqoq4m2i1lvhw"]
+
+[ext_resource type="Script" uid="uid://cfpprxvyqlgtp" path="res://Assets/items/scripts/TurretItem.gd" id="1_urjx0"]
+[ext_resource type="Texture2D" uid="uid://by421cy265pg6" path="res://Assets/Sprites/canon_laser2.png" id="1_wwjke"]
+[ext_resource type="Resource" uid="uid://becglkq8to3n5" path="res://Resources/railgun.tres" id="3_n3j46"]
+
+[resource]
+script = ExtResource("1_urjx0")
+turret_stats = ExtResource("3_n3j46")
+name = "Électro canon"
+price = 10
+icon = ExtResource("1_wwjke")
+rarity = 5
+description = "Tire de puissants rayons lasers infligeant d'importants dégâts"
+metadata/_custom_type_script = "uid://cfpprxvyqlgtp"

@@ -113,7 +113,12 @@ func shoot():
 				stats.attack_range
 			)
 		
-		bullet.modulate = $Base.modulate
+		bullet.self_modulate = $Base.self_modulate
+		bullet.set_collision_layer_value(1, true)
+		bullet.set_collision_mask_value(1, true)
+		bullet.set_collision_mask_value(3, true)
+		bullet.set_collision_mask_value(5, true)
+		
 		
 		get_tree().current_scene.add_child(bullet)
 	$FireSound.volume_db = stats.sound_volume
@@ -122,7 +127,7 @@ func shoot():
 	%AttackTimer.start(stats.fire_rate)
 
 func change_color(color : Color):
-	$Base.modulate = color
+	$Base.self_modulate = color
 	if shooting_style == TurretStats.Shooting_style.LAZER:
 		lazer.set_color(color)
 

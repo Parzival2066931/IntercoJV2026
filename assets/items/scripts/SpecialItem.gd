@@ -4,7 +4,7 @@ class_name SpecialItem
 enum Trigger { ONCE, ON_WAVE_START, ON_WAVE_END, ON_KILL, ON_PLAYER_DYING, ON_LEVEL_UP, ON_COIN_PICKED}
 @export var trigger_type: Trigger
 
-func apply_effect(player: Node2D, game_manager: Node):
+func apply_effect(player: Node2D, game_manager: Node, rarity):
 	print("1")
 	match trigger_type:
 		Trigger.ONCE:

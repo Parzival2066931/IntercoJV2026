@@ -12,6 +12,7 @@ var player : Player
 var game_manager: GameManager
 
 var current_item: BaseItem
+var current_rarity
 
 var rarity_color = {
 	BaseItem.Rarity.COMMON: Color("ffffff"),
@@ -35,6 +36,8 @@ func display_item(temp_item: BaseItem, exponent : int):
 	buy_button.text = "Acheter"
 	buy_button.disabled = false
 	
+	current_rarity = exponent
+	
 	if item.rarity == BaseItem.Rarity.ALL:
 		var temp_multiplier = pow(multiplier, exponent)
 		adjust_item(item, temp_multiplier)
@@ -57,7 +60,7 @@ func display_item(temp_item: BaseItem, exponent : int):
 	
 func adjust_item(item : BaseItem, temp_multiplier : float):
 	if item is TurretItem:
-		item.damage *= temp_multiplier
+		item.turret_stats.damage *= temp_multiplier
 		item.price *= temp_multiplier
 	elif item is StatItem:
 		item.price *= temp_multiplier
@@ -94,7 +97,7 @@ func _on_buy_pressed():
 	buy_button.disabled = true
 	var unique_item = current_item.duplicate()
 	game_manager.owned_items.append(unique_item)
-	unique_item.apply_effect(player, game_manager)
+	unique_item.apply_effect(player, game_manager, rarity_color[current_rarity])
 	item_bought.emit(current_item)
 	
 
@@ -129,14 +132,14 @@ func generate_description(item: BaseItem) -> String:
 			final_text += "%+d%% Vit. Attaque\n" % (item.attack_speed_percent * 100)
 			
 	##a modif mais on voit l'idée
-	elif item is TurretItem:
-		if item.damage != 0:
-			final_text += "%+d de Dégat\n" % item.damage
-		if item.damage != 0:
-			final_text += "%+d Vitesse d'attaque \n" % item.damage
-		if item.fire_rate != 0:
-			final_text += "%+d Vitesse de projectiles\n" % item.projectile_speed
-		if item.projectile_speed != 0:
-			final_text += "%+d Distance d'attaque\n" % item.attack_range
+	#elif item is TurretItem:
+		#if item.turret_stats.damage != 0:
+#w			final_text += "%+d de Dégat\n" % item.turret_stats.damage
+		#if item.turret_stats.attack_speed != 0:
+			#final_text += "%+d Vitesse d'attaque \n" % item.turret_stats.attack_speed
+		#if item.turret_stats.projectile_speed != 0:
+			#final_text += "%+d Vitesse de projectiles\n" % item.turret_stats.projectile_speed
+		#if item.turret_stats.attack_range != 0:
+			#final_text += "%+d Distance d'attaque\n" % item.turret_stats.attack_range
 		
 	return final_text

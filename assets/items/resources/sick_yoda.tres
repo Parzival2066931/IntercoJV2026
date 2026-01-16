@@ -6,7 +6,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_n8nyy")
-hp = 20
+hp = 10
 hp_regen = 3
 hp_percent = 0.02000000000000001
 name = "Alien Mort"

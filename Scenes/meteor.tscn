@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bih2iy6iq5np2" path="res://Script/meteor.gd" id="1_bgiwl"]
 [ext_resource type="Texture2D" uid="uid://re1augsacf5o" path="res://Assets/Sprites/meteroite.png" id="2_bgiwl"]
-[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://addons/trail_2d/trail_2d.gd" id="3_mekeu"]
+[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://Addons/trail_2d/trail_2d.gd" id="3_mekeu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgiwl"]
 radius = 105.0
@@ -15,7 +15,7 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_aq33g"]
 colors = PackedColorArray(0.7873983, 0.39380038, 1.92523e-07, 1, 0, 0, 0, 0)
 
-[node name="Meteor" type="Area2D"]
+[node name="Meteor" type="Area2D" groups=["meteors"]]
 collision_mask = 10
 script = ExtResource("1_bgiwl")
 

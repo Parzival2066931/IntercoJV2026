@@ -24,27 +24,31 @@ func _ready() -> void:
 	#add_new_turret(starting_turret)
 	#add_new_turret(starting_turret)
 	
-func add_new_turret(turret_stats : TurretStats):
-	add_turret(turret_stats, get_first_empty_turret())
+func add_new_turret(turret_stats: TurretStats) -> int:
+	return add_turret(turret_stats, get_first_empty_turret())
 
-func add_turret(turret_stats : TurretStats, index : int):
+func add_turret(turret_stats: TurretStats, index: int) -> int:
 	if index < 0:
 		print("Plus de place pour les tourelles")
-		return
-		
+		return -1
+
 	var path = turret_stats.resource_path
 	var file_name = path.get_file()
-	var new_turret
+	var new_turret: Turret
+
 	if file_name == "baller_turret.tres":
 		new_turret = baller_scene.instantiate()
 	else:
 		new_turret = turret_scene.instantiate()
-		
+
 	new_turret.turret_stats = turret_stats
 	new_turret.position = turrets_positions.get_children()[index].position
 	add_child(new_turret)
+
 	turrets[index] = new_turret
 	turret_count += 1
+	return index
+
 	
 func get_first_empty_turret() -> int:
 	for i in range(turrets.size()):
@@ -58,15 +62,35 @@ func get_turrets():
 func change_color(color : Color, index : int):
 	turrets[index].change_color(color)
 
-func modify_turret(new_stats : TurretStats):
+func modify_turret(new_stats: TurretStats) -> int:
 	for i in range(turrets.size()):
 		var t = turrets[i]
 		if t != null and t.turret_stats != null:
 			if t.turret_stats.resource_path == new_stats.resource_path:
 				update_turret_at_index(i, new_stats)
-				return
-	
-	add_new_turret(new_stats)
+				return i
+
+	return add_new_turret(new_stats)
 
 func update_turret_at_index(index : int, new_stats : TurretStats):
 	turrets[index].modify_turret(new_stats) 
+
+func get_turret_index(turret_stats : TurretStats):
+	for i in range(turrets.size()):
+		var t = turrets[i]
+		if t != null and t.turret_stats != null:
+			if t.turret_stats.resource_path == turret_stats.resource_path:
+				return i
+	return -1
+	
+func reset_to_starting() -> void:
+	for t in turrets:
+		if t != null and is_instance_valid(t):
+			t.queue_free()
+
+	turrets.clear()
+	turrets.resize(5)
+
+	turret_count = 0
+
+	add_turret(starting_turret, 2)

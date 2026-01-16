@@ -7,7 +7,8 @@
 script = ExtResource("2_onyx6")
 damage = 10
 attack_range = -50
-damage_percent = 0.020000000000000018
+damage_percent = 0.02000000000000001
 name = "Canon Surcharger"
+price = 6
 icon = ExtResource("1_itbnv")
 rarity = 5

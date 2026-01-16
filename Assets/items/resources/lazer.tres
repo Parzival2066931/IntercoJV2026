@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TurretItem" load_steps=4 format=3 uid="uid://bqtxdf2hpftcm"]
+
+[ext_resource type="Script" uid="uid://cfpprxvyqlgtp" path="res://Assets/items/scripts/TurretItem.gd" id="1_12oc6"]
+[ext_resource type="Texture2D" uid="uid://k0mvlclt6oke" path="res://Assets/Sprites/canon_laser1.png" id="1_df7qy"]
+[ext_resource type="Resource" uid="uid://bqhuo1c2yaexe" path="res://Resources/lazer.tres" id="3_d4v3x"]
+
+[resource]
+script = ExtResource("1_12oc6")
+turret_stats = ExtResource("3_d4v3x")
+name = "Tourelle laser"
+price = 10
+icon = ExtResource("1_df7qy")
+rarity = 5
+description = "Une tourelle qui tire un long rayon constant"
+metadata/_custom_type_script = "uid://cfpprxvyqlgtp"

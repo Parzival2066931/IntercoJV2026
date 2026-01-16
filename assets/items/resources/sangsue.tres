@@ -11,6 +11,6 @@ hp_regen = 5
 armor = -5
 hp_percent = 0.06000000000000005
 name = "Sangsue"
-price = 10
+price = 7
 icon = ExtResource("1_at8qi")
 rarity = 5

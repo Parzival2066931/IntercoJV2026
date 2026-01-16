@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dhi81cf5cb60j"]
 
-[ext_resource type="PackedScene" uid="uid://bcsuflg3riw4e" path="res://Scenes/turret_manager.tscn" id="1_cvnsp"]
-[ext_resource type="Script" uid="uid://x6fsy78x3btb" path="res://Script/player.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://dm407htfcjbox" path="res://Scenes/turret_manager.tscn" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://jwnmvl6qq5a3" path="res://Script/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://t033hjr5gfjc" path="res://Assets/Sprites/vaisseau_a_Mick.png" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://qqac0dwfbglh" path="res://Script/camera_2d.gd" id="2_x3wgy"]
-[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://addons/trail_2d/trail_2d.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://Addons/trail_2d/trail_2d.gd" id="3_6t5aa"]
 [ext_resource type="Resource" uid="uid://bom1v1lv5rrpc" path="res://Resources/lazer_projectile.tres" id="4_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkybt"]
@@ -79,4 +79,9 @@ metadata/_custom_type_script = "uid://br67kd68yk2s5"
 wait_time = 0.4
 one_shot = true
 
+[node name="PassiveHeal" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="timeout" from="TP_Timer" to="." method="_on_tp_timer_timeout"]
+[connection signal="timeout" from="PassiveHeal" to="." method="_on_passive_heal_timeout"]

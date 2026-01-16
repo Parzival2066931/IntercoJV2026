@@ -6,9 +6,10 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_8m7x0")
-speed_percent = 0.040000000000000036
-attack_speed_percent = 0.040000000000000036
+hp_regen = 2
+speed_percent = 0.04000000000000003
+attack_speed_percent = 0.04000000000000003
 name = "Aimant"
-price = 10
+price = 7
 icon = ExtResource("1_yrsof")
 rarity = 5

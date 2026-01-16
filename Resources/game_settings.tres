@@ -9,7 +9,8 @@
 script = ExtResource("1_w3hpw")
 list_enemies = Array[PackedScene]([ExtResource("2_sloue"), ExtResource("1_051p0")])
 miniboss = ExtResource("3_thuas")
-round_duration = 1.0
+round_duration = 50.0
+current_round = 4
 player_path = NodePath("../Player")
 hud_path = NodePath("../HUD")
 metadata/_custom_type_script = "uid://bjm718qy5us1c"
