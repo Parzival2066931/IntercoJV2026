@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb1jy3pa1b4tk"]
+[gd_scene load_steps=14 format=3 uid="uid://cb1jy3pa1b4tk"]
 
 [ext_resource type="Script" uid="uid://uxqsmpp6n8uj" path="res://laser_2d/laser_2d.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://t105tdvgunrx" path="res://laser_2d/glowing_circle.png" id="2"]
@@ -57,6 +57,9 @@ scale_max = 0.5
 scale_curve = SubResource("4")
 color_ramp = SubResource("2")
 
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_3f48o"]
+buffer_length = 0.1
+
 [node name="LaserBeam2D" type="RayCast2D"]
 target_position = Vector2(1400, 0)
 collision_mask = 4
@@ -65,6 +68,7 @@ start_distance = 0.0
 growth_time = 0.5
 color = Color(1, 0, 0, 1)
 is_casting = true
+frequency = 80.0
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
@@ -97,3 +101,6 @@ texture = ExtResource("2")
 lifetime = 0.1
 visibility_rect = Rect2(-2500, -2500, 5000, 5000)
 process_material = SubResource("9")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamGenerator_3f48o")

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="TurretStats" load_steps=4 format=3 uid="uid://bqhuo1c2yaexe"]
+[gd_resource type="Resource" script_class="TurretStats" load_steps=5 format=3 uid="uid://bqhuo1c2yaexe"]
 
 [ext_resource type="Script" uid="uid://blphcdax0yq2x" path="res://Script/turret_stats.gd" id="1_3707s"]
 [ext_resource type="PackedScene" uid="uid://cb1jy3pa1b4tk" path="res://laser_2d/laser_2d.tscn" id="1_q7qh6"]
+[ext_resource type="AudioStream" uid="uid://c5jjpxokfn0t5" path="res://Assets/Music/energy-hum.mp3" id="1_stpre"]
 [ext_resource type="Texture2D" uid="uid://k0mvlclt6oke" path="res://Assets/Sprites/canon_laser1.png" id="3_q7qh6"]
 
 [resource]
@@ -9,8 +10,11 @@ script = ExtResource("1_3707s")
 weapon_name = "Tourelle Laser"
 sprite = ExtResource("3_q7qh6")
 muzzle_offset = Vector2(8, 0)
+fire_sound = ExtResource("1_stpre")
+sound_volume = 15.0
 damage = 1.0
 fire_rate = 0.01
 attack_range = 1500.0
+is_lazerbeam = true
 projectile_scene = ExtResource("1_q7qh6")
 metadata/_custom_type_script = "uid://blphcdax0yq2x"

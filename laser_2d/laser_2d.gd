@@ -27,7 +27,6 @@ var tween: Tween = null
 
 @onready var line_width := line_2d.width
 
-
 func _ready() -> void:
 	set_color(color)
 	set_is_casting(is_casting)
