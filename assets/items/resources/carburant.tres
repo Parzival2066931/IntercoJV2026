@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://cf7p66qbmfhl7"]
+
+[ext_resource type="Texture2D" uid="uid://cb84vd0o76v4v" path="res://Assets/Sprites/carburant.png" id="1_fop8j"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_5vtnn"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_5vtnn")
+hp = 20
+hp_regen = 3
+hp_percent = 0.020000000000000018
+name = "Carburant"
+price = 10
+icon = ExtResource("1_fop8j")
+rarity = 5
