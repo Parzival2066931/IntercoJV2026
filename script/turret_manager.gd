@@ -6,6 +6,7 @@ const baller_scene = preload("res://Scenes/baller_turret.tscn")
 
 @export var starting_turret : TurretStats
 
+
 var turrets : Array[Turret]
 
 var turret_count = 0

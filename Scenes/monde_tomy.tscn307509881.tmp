@@ -1017,7 +1017,6 @@ gm_path = NodePath("../../GameManager")
 
 [node name="GameManager" parent="." instance=ExtResource("5_opnbj")]
 settings = ExtResource("6_05b4r")
-decollage_path = NodePath("../HUD/StartShip/Decollage")
 
 [node name="Spawner" parent="GameManager" index="3"]
 canvas_layer_path = NodePath("../../HUD")
