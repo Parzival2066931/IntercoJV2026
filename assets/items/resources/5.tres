@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://dgi36rmoc3nh8"]
+
+[ext_resource type="Texture2D" uid="uid://dnr1c8wruwgmc" path="res://Assets/Sprites/mrd7stj7vtv71.png" id="1_ved0o"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_1f4yd"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_1f4yd")
+hp = -20
+hp_regen = -20
+armor = 100
+name = "Neant"
+price = 20
+icon = ExtResource("1_ved0o")
+rarity = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://c487x47qjcikb"]
+[gd_scene format=3 uid="uid://c487x47qjcikb"]
 
 [node name="CurrentItems" type="Control"]
 layout_mode = 3

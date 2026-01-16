@@ -7,7 +7,6 @@ class_name StatItem
 @export var armor := 0
 @export var damage: int = 0
 @export var speed: float = 0.0
-@export var penetration: int = 0
 @export var attack_range: int = 0
 @export var luck: int = 0
 
@@ -26,12 +25,11 @@ func apply_effect(player: Node2D, game_manager: Node):
 	stats.armor += armor
 	stats.base_damage += damage
 	stats.speed += speed
-	stats.penetration += penetration
-	stats.attack_range += attack_range#
+	stats.attack_range += attack_range
 	stats.luck += luck
-	stats.hp_percent_modifier += hp_percent#
-	stats.damage_percent_modifier += damage_percent#
-	stats.speed_percent_modifier += speed_percent#
-	stats.attack_speed_percent_modifier += attack_speed_percent#
+	stats.hp_percent_modifier += hp_percent
+	stats.damage_percent_modifier += damage_percent
+	stats.speed_percent_modifier += speed_percent
+	stats.attack_speed_percent_modifier += attack_speed_percent
 
 	player.update_stats()

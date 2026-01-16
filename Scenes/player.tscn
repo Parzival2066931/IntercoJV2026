@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://dhi81cf5cb60j"]
+[gd_scene load_steps=3 format=3 uid="uid://dhi81cf5cb60j"]
 
-[node name="Player" type="CharacterBody2D"]
+[ext_resource type="Texture2D" uid="uid://t033hjr5gfjc" path="res://Assets/Sprites/vaisseau_a_Mick.png" id="1_v0iea"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f60y1"]
+radius = 20.0
+height = 40.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35, 35)
+shape = SubResource("CapsuleShape2D_f60y1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(35, 35)
+texture = ExtResource("1_v0iea")

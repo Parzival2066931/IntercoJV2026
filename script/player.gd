@@ -1,5 +1,4 @@
 #
-
 extends CharacterBody2D
 class_name Player
 
@@ -45,7 +44,7 @@ func _process(delta: float) -> void:
 	else:
 		update_direction(direction)
 		anim_name = "Running_" + facing
-	$AnimatedSprite2D.play(anim_name)
+#	$AnimatedSprite2D.play(anim_name)
 	
 	if (direction.length() > 0 ):
 		velocity = velocity.lerp(direction * stats.get_total_speed(), acceleration)
@@ -92,14 +91,14 @@ func on_stomp_impact(center: Vector2, radius: float):
 	var cam := $Camera2D
 	if cam != null && cam.has_method("shake"):
 		cam.shake(duration, strength)
-
+		
+		
 func update_stats():
 	hp_changed.emit(stats.current_hp, stats.max_hp)
-	$PassiveHeal.wait_time = base_time * (pow(0.95, min(stats.hp_regen, 100)))
-	for weapon in get_weapons():
-		weapon.stats.damage = stats.get_total_damage(weapon.weapon_stats.damage)
-		weapon.stats.penetration = weapon.weapon_stats.penetration + stats.penetration
-		weapon.stats.attack_range = weapon.weapon_stats.attack_range + stats.attack_range
+	#$PassiveHeal.wait_time = base_time * (pow(0.95, min(stats.hp_regen, 100)))
+	#for weapon in get_weapons():
+		#weapon.stats.damage = stats.get_total_damage(weapon.weapon_stats.damage)
+		#weapon.stats.attack_range = weapon.weapon_stats.attack_range + stats.attack_range
 		
 	
 func get_weapons():

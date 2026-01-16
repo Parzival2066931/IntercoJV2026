@@ -1,4 +1,11 @@
-[gd_scene load_steps=0 format=3 uid="uid://1g77t8yxwnvt"]
+[gd_scene load_steps=7 format=3 uid="uid://1g77t8yxwnvt"]
+
+[ext_resource type="Texture2D" uid="uid://t033hjr5gfjc" path="res://Assets/Sprites/vaisseau_a_Mick.png" id="1_wiyyh"]
+[ext_resource type="Texture2D" uid="uid://c4102rfh78y3h" path="res://Assets/Sprites/canon_basic.png" id="2_ip8ll"]
+[ext_resource type="Texture2D" uid="uid://cxrr518dkml0a" path="res://Assets/Sprites/canon_missile.png" id="3_hihrn"]
+[ext_resource type="Texture2D" uid="uid://bqcvxym20d6n3" path="res://Assets/Sprites/canon_liam_calisss.png" id="4_3wxjh"]
+[ext_resource type="Texture2D" uid="uid://k0mvlclt6oke" path="res://Assets/Sprites/canon_laser1.png" id="5_6yekw"]
+[ext_resource type="Texture2D" uid="uid://by421cy265pg6" path="res://Assets/Sprites/canon_laser2.png" id="6_n1fj1"]
 
 [node name="ShipUiDisplay" type="Control"]
 layout_mode = 3
@@ -11,8 +18,10 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_wiyyh")
+stretch_mode = 1
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -21,25 +30,44 @@ offset_bottom = 40.0
 
 [node name="weaponTexture1" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 29.0
+offset_bottom = 24.0
+texture = ExtResource("2_ip8ll")
+stretch_mode = 1
 
 [node name="weaponTexture2" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 38.0
+offset_top = 8.0
+offset_right = 55.0
+offset_bottom = 27.0
+texture = ExtResource("3_hihrn")
+stretch_mode = 1
 
 [node name="weaponTexture3" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.0
+offset_top = 23.0
+offset_right = 43.0
+offset_bottom = 41.0
+texture = ExtResource("4_3wxjh")
 
 [node name="weaponTexture4" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 27.0
+offset_bottom = 56.0
+texture = ExtResource("5_6yekw")
+stretch_mode = 1
 
 [node name="weaponTexture5" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 38.0
+offset_top = 41.0
+offset_right = 54.0
+offset_bottom = 57.0
+texture = ExtResource("6_n1fj1")
+stretch_mode = 1

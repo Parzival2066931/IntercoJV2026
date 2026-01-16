@@ -4,7 +4,6 @@ extends Node
 @export var rounds_path: NodePath
 @export var cash_path: NodePath
 @export var reroll_path: NodePath
-
 @export var ship_ui_display: NodePath
 @export var stats_display: NodePath
 
@@ -13,20 +12,19 @@ extends Node
 @export var item2_path: NodePath
 @export var item3_path: NodePath
 
-
-
 @onready var game_manager := get_node_or_null(gm_path)
 @onready var rounds := get_node_or_null(rounds_path)
 @onready var cash := get_node_or_null(cash_path)
 @onready var reroll_button := get_node_or_null(reroll_path)
 @onready var item_cards := [get_node_or_null(item1_path), get_node_or_null(item2_path), get_node_or_null(item3_path)]
-#onready var next_round := $PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/NextRound
+@onready var next_round :=$PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/NextRound
 @onready var ship_uid:=  get_node_or_null(ship_ui_display)
-@onready var stats_panel := (stats_display)
+@onready var stats_panel = get_node_or_null(stats_display)
 
+var player : Player
 
 var attemps: int
-var base_attemps := 3
+var base_attemps := 100
 var items = {
 	BaseItem.Rarity.COMMON: [],
 	BaseItem.Rarity.UNCOMMON: [],
@@ -39,12 +37,20 @@ var gm: GameManager
 
 func _ready() -> void:
 	print("SHOP ready")
+	await get_tree().process_frame
+	player = get_tree().current_scene.get_node_or_null("Player")
+	if player == null:
+		push_error("ShopOverlay: Player introuvable")
+	stats_panel.bind_player(player)
 	load_all_items()
-	for card in get_tree().get_nodes_in_group("Shop_Cards"):
+	for card in item_cards:
 		card.item_bought.connect(on_item_bought)
-
+	setup()
+	
+	
+	
 func load_all_items():
-	var dir := DirAccess.open("res://assets/items/resources/")
+	var dir := DirAccess.open("res://Assets/items/resources/")
 	if dir == null:
 		print("OUPS")
 		push_error("Impossible d’ouvrir le dossier des items")
@@ -55,7 +61,7 @@ func load_all_items():
 
 	while file_name != "":
 		if file_name.ends_with(".tres"):
-			var path := "res://assets/items/resources/" + file_name
+			var path := "res://Assets/items/resources/" + file_name
 			var res := load(path)
 
 			if res == null:
@@ -70,25 +76,21 @@ func load_all_items():
 				
 				match res.rarity:
 					BaseItem.Rarity.COMMON:
-						print("COMMON: ")
-						print(res)
 						items[BaseItem.Rarity.COMMON].append(res)
 					BaseItem.Rarity.UNCOMMON:
-						print("UNCOMMON: ")
-						print(res)
 						items[BaseItem.Rarity.UNCOMMON].append(res)
 					BaseItem.Rarity.RARE:
-						print("RARE: ")
-						print(res)
 						items[BaseItem.Rarity.RARE].append(res)
 					BaseItem.Rarity.EPIC:
-						print("EPIC: ")
-						print(res)
 						items[BaseItem.Rarity.EPIC].append(res)
 					BaseItem.Rarity.LEGENDARY:
-						print("LEGENDARY: ")
-						print(res)
 						items[BaseItem.Rarity.LEGENDARY].append(res)
+					BaseItem.Rarity.ALL:
+						items[BaseItem.Rarity.COMMON].append(res.duplicate())
+						items[BaseItem.Rarity.UNCOMMON].append(res.duplicate())
+						items[BaseItem.Rarity.RARE].append(res.duplicate())
+						items[BaseItem.Rarity.EPIC].append(res.duplicate())
+						items[BaseItem.Rarity.LEGENDARY].append(res.duplicate())
 					_:
 						print("Erreur: ", res.rarity)
 						
@@ -96,23 +98,25 @@ func load_all_items():
 		file_name = dir.get_next()
 
 	dir.list_dir_end()
-	print(items[BaseItem.Rarity.EPIC])
 
 func setup():
 	reroll_button.disabled = false
 	attemps = base_attemps
-	cash.text = str(game_manager.amount_of_coin)
+	cash.text = str(game_manager.amount_of_star)
 	rounds.text = "Shop (Wave %d)" % game_manager.current_round
-	#next_round.text = "Go (Wave %d)" % (game_manager.current_round + 1)
-	
+	next_round.text = "Go (Wave %d)" % (game_manager.current_round + 1)
 	display_items()
+	#stats_panel.updateStatsLabel(player)
+	
 
 func display_items():
 	for item in item_cards:
-		item.display_item(get_item())
+		var tab = get_item()
+		item.display_item(tab[0], tab[1])
 
-func get_item() -> BaseItem:
-	return items[roll_rarity(0)].pick_random()
+func get_item():
+	var roll = roll_rarity(0)
+	return [items[roll].pick_random(), roll]
 
 func roll_rarity(luck: float) -> BaseItem.Rarity:
 	var chance = clamp(luck / 100.0, 0.0, 1.0)
@@ -139,9 +143,12 @@ func roll_rarity(luck: float) -> BaseItem.Rarity:
 
 	return BaseItem.Rarity.COMMON
 
+func on_item_bought(item : BaseItem):
+	cash.text = str(game_manager.amount_of_star)
+	stats_panel.update_stats()
+	var inventory_map = build_inventory_map(game_manager.owned_items)
+	$PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Footer/ScrollContainer/GridContainer.set_items(inventory_map)
 
-func on_item_bought():
-	cash.text = str(game_manager.amount_of_coin)
 
 func _on_next_round_pressed() -> void:
 	gm = get_node_or_null(gm_path)
@@ -150,8 +157,23 @@ func _on_next_round_pressed() -> void:
 		return
 		
 	gm.set_state(GameManager.GameState.IN_ROUND)
+	
+#  modif idee de base
+func build_inventory_map(itemss: Array) -> Dictionary:
+	var map := {}
 
-func _on_reroll_button_pressed() -> void:
+	for item in itemss:
+		if not map.has(item.name):
+			map[item.name] = {
+				"item": item,
+				"count": 1
+			}
+		else:
+			map[item.name]["count"] += 1
+	return map
+	
+
+func _on_reroll_pressed() -> void:
 	attemps -= 1
 	if attemps == 0:
 		reroll_button.disabled = true

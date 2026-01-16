@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://nwn67q67pnp1"]
+
+[ext_resource type="Texture2D" uid="uid://b5vj6ok755hvo" path="res://Assets/Sprites/ennemie_base.png" id="1_thfes"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_cs2jw"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_cs2jw")
+hp = 100
+luck = 1000
+speed_percent = 0.05000000000000004
+attack_speed_percent = 0.05000000000000004
+name = "Buddy"
+price = 10
+icon = ExtResource("1_thfes")
+rarity = 1

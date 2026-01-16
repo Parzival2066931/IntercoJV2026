@@ -1,30 +1,57 @@
 extends Node
+class_name StatsPanel
 
-@onready var stats_container := $MarginContainer/VBoxContainer/Body
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# Labels pour les clés et valeurs
+@onready var stats_key: Label = $MarginContainer/VBoxContainer/Body/StatsContainer/KeyContainer/StatsKey
+@onready var stats_value: Label = $MarginContainer/VBoxContainer/Body/StatsContainer/StatsValue/StatsValue
 
 
-#j'imagine que .stats cest chiffre pis donne pogne manuel? avec le shop si y connais ou proche
-func add_stat_code(name: String, value ):
-	var hbox = HBoxContainer.new()
+var player: Player
 
-	var label_name = Label.new()
-	label_name.text = name
 
-	var spacer = Control.new()
-	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+func bind_player(p: Player) -> void:
+	player = p
+	update_stats()
 
-	var label_value = Label.new()
-	label_value.text = str(value)
+func update_stats() -> void:
+	print("alloa")
+	if player == null or player.stats == null:
+		return
+	print("loalo")
+	stats_key.text = generate_keyname()
+	stats_value.text = generate_value()
 
-	hbox.add_child(label_name)
-	hbox.add_child(spacer)
-	hbox.add_child(label_value)
+func generate_value() -> String:
+	var s = player.stats
+	var txt := ""
 
-	stats_container.add_child(hbox)
+	txt += "%d\n" % s.get_total_max_hp()
+	txt += "%0.1f\n" % s.hp_regen
+	txt += "%d\n" % s.get_total_speed()
+	txt += "%d\n" % s.armor
+	txt += "%d\n" % s.base_damage
+	txt += "%d\n" % s.attack_range
+	txt += "%d%%\n" % int(s.hp_percent_modifier * 100)
+	txt += "%d%%\n" % int(s.damage_percent_modifier * 100)
+	txt += "%d%%\n" % int(s.speed_percent_modifier * 100)
+	txt += "%d%%\n" % int(s.attack_speed_percent_modifier * 100)
+	txt += "%d\n" % s.luck
+
+	return txt
+
+func generate_keyname() -> String:
+	#var s = player.stats
+	var txt := ""
+	txt += "Vie max\n"
+	txt += "Régénération\n"
+	txt += "Vitesse\n"
+	txt += "Armure\n"
+	txt += "Dégâts de base\n"
+	txt += "Portée\n"
+	txt += "Vie max %\n"
+	txt += "Dégâts %\n"
+	txt += "Vitesse %\n"
+	txt += "Vitesse d'attaque %\n"
+	txt += "Chance\n"
+
+	return txt

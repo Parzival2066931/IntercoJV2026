@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TurretStats" load_steps=4 format=3 uid="uid://becglkq8to3n5"]
+
+[ext_resource type="Script" uid="uid://blphcdax0yq2x" path="res://Script/turret_stats.gd" id="1_5s18l"]
+[ext_resource type="PackedScene" uid="uid://cb1jy3pa1b4tk" path="res://laser_2d/laser_2d.tscn" id="1_eb14p"]
+[ext_resource type="Texture2D" uid="uid://by421cy265pg6" path="res://Assets/Sprites/canon_laser2.png" id="3_yvc7s"]
+
+[resource]
+script = ExtResource("1_5s18l")
+weapon_name = "Railgun"
+sprite = ExtResource("3_yvc7s")
+muzzle_offset = Vector2(9, 0)
+damage = 150.0
+fire_rate = 1.0
+seperates_lazer_shots = true
+lazer_width = 4.0
+projectile_scene = ExtResource("1_eb14p")
+metadata/_custom_type_script = "uid://blphcdax0yq2x"
