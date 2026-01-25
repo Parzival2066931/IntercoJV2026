@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj6gwabgdnlck"]
+[gd_scene load_steps=10 format=3 uid="uid://cj6gwabgdnlck"]
 
 [ext_resource type="Texture2D" uid="uid://djblnmtwbe5fd" path="res://Assets/Sprites/easter_egg.png" id="1_21y2q"]
 [ext_resource type="Script" uid="uid://cvrn8b8menqy7" path="res://Script/EnemyScripts/alien_egg.gd" id="1_6133r"]
+[ext_resource type="AudioStream" uid="uid://8hpq8cp7da2s" path="res://Assets/Music/AlienFound.wav" id="3_ikrog"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6133r"]
 atlas = ExtResource("1_21y2q")
@@ -57,5 +58,6 @@ frame_progress = 0.68966436
 shape = SubResource("CapsuleShape2D_cfbff")
 
 [node name="EEFound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ikrog")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

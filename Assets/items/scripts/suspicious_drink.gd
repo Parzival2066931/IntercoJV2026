@@ -11,4 +11,6 @@ func apply_effect(player: Node2D, game_manager: Node, rarity):
 		player.get_node("Trail2D").width *= 0.5
 		player.get_node("Trail2D").length *= 0.5
 	
+	player.scale_changed.emit()
+	
 	

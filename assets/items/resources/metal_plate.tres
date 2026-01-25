@@ -8,6 +8,6 @@ resource_local_to_scene = true
 script = ExtResource("2_36rnv")
 armor = 10
 name = "Plaque"
-price = 7
+price = 10
 icon = ExtResource("1_tdm10")
 rarity = 5

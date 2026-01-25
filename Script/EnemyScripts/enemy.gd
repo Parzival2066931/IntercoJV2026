@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 func set_difficulty(mult: float):
 	max_hp = base_max_hp * mult
 	damage = base_damage * mult
-	speed = base_speed * mult
+	speed = base_speed * max((0.25 * mult), 1.0)
 	hp = max_hp
 	health_bar.max_value = max_hp
 	health_bar.value = hp

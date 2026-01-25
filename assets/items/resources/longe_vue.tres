@@ -7,9 +7,9 @@
 resource_local_to_scene = true
 script = ExtResource("2_k6j63")
 armor = 3
-attack_range = 150
+attack_range = 15
 luck = 3
 name = "Longue vue"
-price = 10
+price = 7
 icon = ExtResource("1_606n8")
 rarity = 5

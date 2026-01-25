@@ -11,11 +11,12 @@ class_name Hud
 @onready var decollage: Sprite2D = $StartShip/Decollage
 @onready var muzzle: Marker2D = $StartShip/Muzzle
 
-signal spawn_ship_request(pos: float, ship: PackedScene)
+signal spawn_ship_request(pos: Vector2, ship: PackedScene)
 
 func _ready() -> void:
 	print("HUD ready")
 	decollage.hide()
+	depart.hide()
 	
 
 func set_round(current_round: int) -> void:
@@ -28,7 +29,6 @@ func hide_timer():
 	time_label.text = "!!! Vaincre le boss !!!"
 
 func set_cash(amount: int) -> void:
-	print("plus d'argent! du HUD")
 	star_label.text = str(amount)
 
 func set_hp(hp: float, max_hp: float) -> void:

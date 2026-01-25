@@ -11,6 +11,6 @@ damage_percent = 0.10000000000000007
 speed_percent = -0.02000000000000001
 attack_speed_percent = 0.06000000000000005
 name = "Biere Viellote"
-price = 10
+price = 7
 icon = ExtResource("1_m1a1k")
 rarity = 5

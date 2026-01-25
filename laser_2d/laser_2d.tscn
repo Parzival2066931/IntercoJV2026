@@ -66,13 +66,10 @@ collision_mask = 4
 script = ExtResource("1")
 start_distance = 0.0
 growth_time = 0.5
-color = Color(1, 0, 0, 1)
 is_casting = true
-frequency = 80.0
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
 points = PackedVector2Array(0, 0, 1400, 0)
 width = 2.0
 joint_mode = 2
@@ -82,7 +79,6 @@ sharp_limit = 8.0
 
 [node name="BeamParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
 position = Vector2(700, 0)
 emitting = false
 amount = 3
@@ -94,7 +90,6 @@ process_material = SubResource("8")
 
 [node name="CollisionParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
 show_behind_parent = true
 emitting = false
 texture = ExtResource("2")

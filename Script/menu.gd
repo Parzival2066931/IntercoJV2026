@@ -6,6 +6,7 @@ class_name Menu
 
 @onready var settings: Settings = $"../Settings"
 @onready var depart: AnimatedSprite2D = $"../StartShip/Depart"
+@onready var start_ship: Area2D = $"../StartShip"
 @onready var game_manager := get_node_or_null(gm_path)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,8 +21,7 @@ func _process(delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
-	depart.play("Départ")
-	hide()
+	game_manager.set_state(game_manager.GameState.INTRO)
 
 func _on_settings_pressed() -> void:
 	settings.visible = true

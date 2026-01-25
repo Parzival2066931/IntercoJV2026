@@ -8,16 +8,15 @@ var multiplier := 1.75
 @onready var price_label = $MarginContainer/Item/ItemFoot/StarsUi/Amount
 @onready var buy_button = $MarginContainer/Item/ItemFoot/BuyButton
 @onready var stats: Label = $MarginContainer/Item/ItemBody/Description
+
 var player : Player 
 var game_manager: GameManager
-
 var current_item: BaseItem
-var current_rarity
 
 var rarity_color = {
 	BaseItem.Rarity.COMMON: Color("ffffff"),
 	BaseItem.Rarity.UNCOMMON: Color("2cb93c"),
-	BaseItem.Rarity.RARE: Color("5e8db5"),
+	BaseItem.Rarity.RARE: Color("006cff"),
 	BaseItem.Rarity.EPIC: Color("8c4ed1"),
 	BaseItem.Rarity.LEGENDARY: Color("ff0e06")
 }
@@ -31,39 +30,31 @@ func _ready() -> void:
 			c.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 #nill car pas d'objet pour l'instant sois disant
-func display_item(temp_item: BaseItem, exponent : int):
+func display_item(temp_item: BaseItem):
 	var item = temp_item.duplicate()
 	buy_button.text = "Acheter"
 	buy_button.disabled = false
 	
-	current_rarity = exponent
-	
-	if item.rarity == BaseItem.Rarity.ALL:
-		var temp_multiplier = pow(multiplier, exponent)
+	if item is not SpecialItem:
+		var temp_multiplier = pow(multiplier, item.rarity)
 		adjust_item(item, temp_multiplier)
 	
 	current_item = item
 	icon.texture = item.icon
+	icon.self_modulate = item.modulate_color
 	name_label.text = item.name
-	var c: Color = rarity_color[exponent]
-	$TextureRect.modulate = c
-	current_item.modulate = rarity_color[exponent]
-	#name_label.add_theme_color_override("font_color", c)
-#
-	#var sb := get_theme_stylebox("panel").duplicate() as StyleBoxFlat
-	#sb.bg_color = c.darkened(0.8)
-	#sb.border_color = c
-	#add_theme_stylebox_override("panel", sb)
-
+	var c: Color = rarity_color[item.rarity]
+	$TextureRect.self_modulate = c
 	stats.text = generate_description(item)
 	price_label.text = str(item.price)
 	
 func adjust_item(item : BaseItem, temp_multiplier : float):
+	var price_multiplier = pow(1.6, item.rarity)
 	if item is TurretItem:
 		item.turret_stats.damage *= temp_multiplier
-		item.price *= temp_multiplier
+		item.price *= price_multiplier
 	elif item is StatItem:
-		item.price *= temp_multiplier
+		item.price *= price_multiplier
 		if item.hp > 0: 
 			item.hp *= temp_multiplier
 		if item.hp_regen > 0: 
@@ -97,7 +88,7 @@ func _on_buy_pressed():
 	buy_button.disabled = true
 	var unique_item = current_item.duplicate()
 	game_manager.owned_items.append(unique_item)
-	unique_item.apply_effect(player, game_manager, rarity_color[current_rarity])
+	unique_item.apply_effect(player, game_manager, rarity_color[current_item.rarity])
 	item_bought.emit(current_item)
 	
 

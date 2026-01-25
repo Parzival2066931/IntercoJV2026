@@ -27,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ccd4q")
-rounds_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/NextRound")
+rounds_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/CurrentRound")
 cash_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/StarsUi/Amount")
 reroll_path = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/Reroll")
 stats_display = NodePath("PanelContainer/MarginContainer/HBoxContainer/StatsSide/StatsContainer/StatsPanel")
@@ -65,7 +65,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="NextRound" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header"]
+[node name="CurrentRound" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header"]
 layout_mode = 2
 text = "Boutique (Vague 1)"
 label_settings = SubResource("LabelSettings_2aaoe")
@@ -101,15 +101,12 @@ size_flags_stretch_ratio = 0.0
 columns = 3
 
 [node name="ShipCards1" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList" instance=ExtResource("1_kjfcx")]
-custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 
 [node name="ShipCards2" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList" instance=ExtResource("1_kjfcx")]
-custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 
 [node name="ShipCards3" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Body/ShopList" instance=ExtResource("1_kjfcx")]
-custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 
 [node name="Footer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -153,7 +150,7 @@ alignment = 2
 [node name="Next" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/StatsSide/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "Continuer"
+text = "Continuer ()"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Header/Reroll" to="." method="_on_reroll_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/StatsSide/VBoxContainer/Next" to="." method="_on_next_round_pressed"]

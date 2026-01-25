@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx68ypgcfncjn"]
 
-[ext_resource type="Script" uid="uid://dmgy215rukdvs" path="res://Script/enemy.gd" id="1_hghv2"]
+[ext_resource type="Script" uid="uid://dmgy215rukdvs" path="res://Script/EnemyScripts/enemy.gd" id="1_1nkbo"]
 [ext_resource type="Texture2D" uid="uid://ddpikrds1ojxj" path="res://Assets/Sprites/Enemy Health Bar/progress bar least rounded over.png" id="4_3go2c"]
 [ext_resource type="Texture2D" uid="uid://bw8a0fnwlq35k" path="res://Assets/Sprites/Enemy Health Bar/progress bar least rounded under.png" id="5_ma5no"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
-script = ExtResource("1_hghv2")
+script = ExtResource("1_1nkbo")
+base_max_hp = 125.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://c18yaym0a2o3"]
+
+[ext_resource type="Texture2D" uid="uid://bqesdl4b2erx7" path="res://Assets/Sprites/critaux_kyber.png" id="1_gbocf"]
+[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_khkg6"]
+
+[resource]
+script = ExtResource("2_khkg6")
+damage_percent = 0.08000000000000007
+name = "Cristal de dégât"
+price = 8
+icon = ExtResource("1_gbocf")
+rarity = 5
+modulate_color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://do8fdk85upiid"

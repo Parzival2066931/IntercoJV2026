@@ -37,7 +37,6 @@ func _ready() -> void:
 
 	if not Engine.is_editor_hint():
 		set_physics_process(true)
-	set_color(Color.RED)
 
 
 func _physics_process(delta: float) -> void:

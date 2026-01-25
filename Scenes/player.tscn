@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhi81cf5cb60j"]
+[gd_scene load_steps=12 format=3 uid="uid://dhi81cf5cb60j"]
 
 [ext_resource type="PackedScene" uid="uid://dm407htfcjbox" path="res://Scenes/turret_manager.tscn" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://jwnmvl6qq5a3" path="res://Script/player.gd" id="1_v0iea"]
@@ -19,6 +19,9 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_x3wgy"]
 colors = PackedColorArray(0, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3smsa"]
+radius = 65.37584
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -76,12 +79,18 @@ length = 20
 metadata/_custom_type_script = "uid://br67kd68yk2s5"
 
 [node name="TP_Timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.05
 one_shot = true
 
 [node name="PassiveHeal" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="AttractionField" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="AttractionShape" type="CollisionShape2D" parent="AttractionField"]
+shape = SubResource("CircleShape2D_3smsa")
 
 [connection signal="timeout" from="TP_Timer" to="." method="_on_tp_timer_timeout"]
 [connection signal="timeout" from="PassiveHeal" to="." method="_on_passive_heal_timeout"]

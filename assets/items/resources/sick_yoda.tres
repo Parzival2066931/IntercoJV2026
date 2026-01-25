@@ -6,10 +6,10 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_n8nyy")
-hp = 10
-hp_regen = 3
-hp_percent = 0.02000000000000001
-name = "Alien Mort"
+hp_regen = 5
+luck = 5
+hp_percent = 0.040000000000000036
+name = "Alien mort"
 price = 10
 icon = ExtResource("1_xpkx6")
 rarity = 5

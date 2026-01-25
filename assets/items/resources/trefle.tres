@@ -5,10 +5,7 @@
 
 [resource]
 script = ExtResource("2_c7dum")
-damage = -5
-speed = 5.0
-attack_range = -10
-luck = 5
+luck = 10
 name = "Trèfle"
-price = 10
+price = 7
 icon = ExtResource("1_bd48i")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7cjslv55at4o"]
+
+[ext_resource type="Script" uid="uid://ormx0311ruag" path="res://Script/map_boundaries.gd" id="1_m26e2"]
+
+[node name="MapBoundaries" type="StaticBody2D"]
+script = ExtResource("1_m26e2")

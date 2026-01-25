@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("2_pjhmu")
 hp = 20
+hp_regen = 2
 armor = -3
-luck = 10
+luck = 3
 name = "Pingouin"
 price = 6
 icon = ExtResource("1_glvbg")
-rarity = 1
+rarity = 5

@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 func get_closest_enemy():
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	var closest_enemy = null
-	var shortest_distance = 500
+	var shortest_distance = 750
 
 	for enemy in enemies:
 		var distance = global_position.distance_to(enemy.global_position)

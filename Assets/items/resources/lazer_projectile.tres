@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_mv8f5")
 turret_stats = ExtResource("3_1nuit")
-name = "Fusil laser"
+name = "Pistolet laser"
 price = 10
 icon = ExtResource("1_yqmve")
 rarity = 5

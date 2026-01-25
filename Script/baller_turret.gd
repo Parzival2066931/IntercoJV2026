@@ -23,7 +23,7 @@ func shoot():
 		
 		get_tree().current_scene.add_child(bullet)
 		
-		bullet.self_modulate = $Base.self_modulate
+		bullet.get_node("Sprite2D").self_modulate = $Base.self_modulate
 		bullet.set_collision_layer_value(1, true)
 		bullet.set_collision_mask_value(1, true)
 		bullet.set_collision_mask_value(3, true)

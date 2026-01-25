@@ -2,11 +2,7 @@ extends Enemy
 class_name LazerEnemy
 
 func _ready() -> void:
-	print("READY node=", name,
-		" script_path=", (get_script() as Script).resource_path,
-		" scene=", scene_file_path,
-		" class=", get_class()
-	)
+	print(base_max_hp)
 	super()
 
 

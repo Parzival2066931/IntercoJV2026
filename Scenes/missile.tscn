@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://itlqnntoyxr3"]
+[gd_scene load_steps=7 format=3 uid="uid://lc0qh10ply03"]
 
 [ext_resource type="PackedScene" uid="uid://c2d53ss2f34jp" path="res://Scenes/base_bullet.tscn" id="1_u28tq"]
 [ext_resource type="Script" uid="uid://x622iqsyhv4r" path="res://Script/missile.gd" id="2_bkb3y"]
 [ext_resource type="Texture2D" uid="uid://03vcwxf16l5" path="res://Assets/Sprites/missile.png" id="3_bkb3y"]
+[ext_resource type="Script" uid="uid://br67kd68yk2s5" path="res://addons/trail_2d/trail_2d.gd" id="4_5epdn"]
+
+[sub_resource type="Curve" id="Curve_d3kn2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5326087, 0.47191018), -1.9020226, -1.9020226, 0, 0, Vector2(0.81521744, 0.011235952), -1.3156282, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_5epdn"]
+colors = PackedColorArray(0, 0, 0, 0, 0.78431374, 0.39215687, 0, 1)
 
 [node name="Missile" instance=ExtResource("1_u28tq")]
 script = ExtResource("2_bkb3y")
 
 [node name="Sprite2D" parent="." index="0"]
-self_modulate = Color(1, 1, 1, 1)
 texture = ExtResource("3_bkb3y")
+
+[node name="Trail2D" type="Line2D" parent="." index="2"]
+width_curve = SubResource("Curve_d3kn2")
+gradient = SubResource("Gradient_5epdn")
+script = ExtResource("4_5epdn")
+length = 5
+metadata/_custom_type_script = "uid://br67kd68yk2s5"

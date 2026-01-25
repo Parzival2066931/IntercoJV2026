@@ -73,25 +73,23 @@ func attack(enemy):
 func shoot_lazer():
 	if not %AttackTimer.is_stopped():
 		return
-	print(stats.resource_path.get_file())
 	if stats.seperates_lazer_shots == false:
 		if $FireSound.playing:
-			print("pass")
 			pass 
 		else:
 			$FireSound.volume_db = stats.sound_volume
 			$FireSound.play()
-			print("Play")
 	else:
 		$FireSound.volume_db = stats.sound_volume
 		$FireSound.play()
 	lazer.set_is_casting(true)
+	
 	lazer.force_raycast_update()
 	
 	var enemy = lazer.get_collider()
 	if enemy and enemy.has_method("take_damage"):
 		enemy.take_damage(stats.damage)
-	%AttackTimer.start(stats.fire_rate)
+		%AttackTimer.start(stats.fire_rate)
 	
 	if stats.seperates_lazer_shots:
 		await get_tree().create_timer(0.5).timeout
@@ -113,7 +111,17 @@ func shoot():
 				stats.attack_range
 			)
 		
-		bullet.modulate = $Base.modulate
+		
+		if bullet is not Missile:
+			bullet.get_node("Sprite2D").self_modulate = $Base.self_modulate
+		else:
+			bullet.get_node("Trail2D").gradient.set_color(1, $Base.self_modulate)
+		
+		bullet.set_collision_layer_value(1, true)
+		bullet.set_collision_mask_value(1, true)
+		bullet.set_collision_mask_value(3, true)
+		bullet.set_collision_mask_value(5, true)
+		
 		
 		get_tree().current_scene.add_child(bullet)
 	$FireSound.volume_db = stats.sound_volume
@@ -122,7 +130,7 @@ func shoot():
 	%AttackTimer.start(stats.fire_rate)
 
 func change_color(color : Color):
-	$Base.modulate = color
+	$Base.self_modulate = color
 	if shooting_style == TurretStats.Shooting_style.LAZER:
 		lazer.set_color(color)
 

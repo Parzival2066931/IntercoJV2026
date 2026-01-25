@@ -7,6 +7,7 @@
 script = ExtResource("1_bxrtx")
 trigger_type = 1
 name = "Carte cosmique"
-price = 40
+price = 5
 icon = ExtResource("1_kecux")
 rarity = 3
+description = "+20% d'étoiles au début de chaque vague"

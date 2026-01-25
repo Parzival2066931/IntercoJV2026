@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://be0f35d4q7al3"]
+[gd_scene load_steps=8 format=3 uid="uid://be0f35d4q7al3"]
 
 [ext_resource type="Script" uid="uid://b2raeff3gjpbw" path="res://Script/game_manager.gd" id="1_e5fcp"]
 [ext_resource type="PackedScene" uid="uid://ddxdw3a12h24f" path="res://Scenes/spawner.tscn" id="2_sq00h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Script/music_player.gd" id="4_yqty0"]
 [ext_resource type="AudioStream" uid="uid://dx5kd6xxjpajr" path="res://Assets/Music/MainTheme.wav" id="5_71d4j"]
 [ext_resource type="AudioStream" uid="uid://bf45jib3fnb22" path="res://Assets/Music/ShopTheme.wav" id="6_efn8y"]
+[ext_resource type="AudioStream" uid="uid://8hpq8cp7da2s" path="res://Assets/Music/AlienFound.wav" id="7_71d4j"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_e5fcp")
@@ -29,6 +30,9 @@ stream = ExtResource("5_71d4j")
 [node name="ShopTheme" type="AudioStreamPlayer" parent="MusicPlayer"]
 process_mode = 3
 stream = ExtResource("6_efn8y")
+
+[node name="EEFound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_71d4j")
 
 [connection signal="timeout" from="Round_Timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]

@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="StatItem" load_steps=3 format=3 uid="uid://chkn6tygso62s"]
+[gd_resource type="Resource" script_class="Magnet" load_steps=3 format=3 uid="uid://chkn6tygso62s"]
 
 [ext_resource type="Texture2D" uid="uid://dip1estg4e50x" path="res://Assets/Sprites/aimant.png" id="1_yrsof"]
-[ext_resource type="Script" uid="uid://do8fdk85upiid" path="res://Assets/items/scripts/StatItem.gd" id="2_8m7x0"]
+[ext_resource type="Script" uid="uid://dhjpvihftivoh" path="res://Assets/items/scripts/magnet.gd" id="2_yrsof"]
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("2_8m7x0")
-hp_regen = 2
-speed_percent = 0.04000000000000003
-attack_speed_percent = 0.04000000000000003
+script = ExtResource("2_yrsof")
+scale_range = Vector2(2, 2)
 name = "Aimant"
-price = 7
+price = 10
 icon = ExtResource("1_yrsof")
-rarity = 5
+rarity = 1
+description = "Augmente la taille du champ d'attraction des étoiles"

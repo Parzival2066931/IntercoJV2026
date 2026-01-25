@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_f7ow2")
-attack_range = 300
+attack_range = 30
+attack_speed_percent = 0.050000000000000044
 name = "Satellite"
-price = 8
+price = 9
 icon = ExtResource("1_vgy8l")
-rarity = 2
+rarity = 5
